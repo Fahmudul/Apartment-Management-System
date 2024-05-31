@@ -1,0 +1,8 @@
+<svg id='wave' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1817 961" preserveAspectRatio="xMidYMid" width="1817" height="961" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);"><g data-idx="1"><linearGradient y2="0" y1="0" x2="1" x1="0" id="lg-nq4q5u6dq7r" data-idx="2">
+  <stop offset="0" stop-color="#ece3ca" data-idx="3"></stop>
+  <stop offset="1" stop-color="#e1cf9f" data-idx="4"></stop>
+</linearGradient><path opacity="0.4" fill="url(#lg-nq4q5u6dq7r)" d="M 0 0 L 0 693.324 Q 454.25 546.232 908.5 518.98 T 1817 411.16 L 1817 0 Z" data-idx="5">
+  
+</path><path opacity="0.4" fill="url(#lg-nq4q5u6dq7r)" d="M 0 0 L 0 607.285 Q 454.25 480.463 908.5 445.012 T 1817 304.552 L 1817 0 Z" data-idx="7">
+  
+</path><g data-idx="9"></g></g><text data-watermark="true" text-anchor="middle" dominant-baseline="middle" stroke-opacity="0.1" fill="black" fill-opacity="0.1" stroke="white" stroke-width="1" font-size="15.0" x="908.5" y="480.5" data-idx="10" style="opacity: 1; font-size: 15px;">LOADING.IO</text></svg>

@@ -1,0 +1,6 @@
+.main-screen {
+  background-color: var(--body_background);
+}
+.theme-controller {
+  color: var(--text_color);
+}

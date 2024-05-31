@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --body_background: #ece3ca; 
+
+  --body_color: #333333;
+  --link_color: #666666;
+  --logo_title: #d59a51;
+  --card_color: white;
+  --text_color: #b18045;
+  --testimonial_color: #e2e2e2;
+  --side_bar_background: rgba(0, 0, 0, 0.1);
+  --button_color: #b18045;
+  --button_color_hover: #93673b;
+}
+*,
+::before,
+::after {
+  border-style: none;
+}
+[data-theme="dark"] {
+  --side_bar_background: rgba(156, 154, 154, 0.1);
+  --body_background: #1a103d;
+  --body_color: #cccccc;
+  --link_color: #cccccc;
+  --logo_title: #9993eb;
+  --text_color: #7c73ff;
+  --card_color: #212121;
+  --testimonial_color: #262525;
+  --button_color: #5d33f8;
+  --button_color_hover: #5126dc;
+}
