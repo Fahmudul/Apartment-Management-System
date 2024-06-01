@@ -47,7 +47,7 @@ const Navbar = () => {
         </label>
 
         <div className="logo" onClick={home}>
-          <h2 style={{ textDecoration: "none" }}>C̲o̲z̲y̲N̲e̲s̲t̲ ̲R̲e̲n̲t̲a̲l̲s̲</h2>
+          <h2 style={{ textDecoration: "none" }}>C̲o̲z̲y̲N̲e̲s̲t̲ ̲</h2>
           <img src={webLogo} alt="logo" />
         </div>
         <div className="nav-items flex">

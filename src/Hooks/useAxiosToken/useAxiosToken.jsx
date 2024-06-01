@@ -23,8 +23,6 @@ const useAxiosToken = () => {
 
   axiosToken.interceptors.response.use(
     (response) => {
-  
-
       return response;
     },
     (error) => {
