@@ -10,10 +10,13 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../Firebase/FirebaseConfig";
+import useAxiosToken from "../Hooks/useAxiosToken/useAxiosToken";
+import useAxiosBase from "../Hooks/useAxiosBase/useAxiosBase";
 export const UserAuthContext = createContext();
 const UserContext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosBase = useAxiosBase();
   // Create Account
   const CreateUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -44,18 +47,26 @@ const UserContext = ({ children }) => {
 
   // Manage user state to check if a user logged in or not
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
-        console.log("Current user", currentUser);
+        const email = { email: currentUser.email };
+        // console.log("Current user", email);
         setUser(currentUser);
-        setLoading(false);
+        //Request for token from server
+        const { data } = await axiosBase.post("/jwt", email);
+        // console.log(data);
+        //Set token to local storage
+        if (data) {
+          localStorage.setItem("access-token", data);
+          setLoading(false);
+        }
       } else {
         setUser(null);
         setLoading(false);
       }
     });
     return () => unSubscribe();
-  }, []);
+  }, [axiosBase]);
   const userAuthInfo = {
     CreateUser,
     SignIn,
@@ -63,7 +74,7 @@ const UserContext = ({ children }) => {
     user,
     loading,
     SignOut,
-    UpdateUserProfile
+    UpdateUserProfile,
   };
   return (
     <UserAuthContext.Provider value={userAuthInfo}>

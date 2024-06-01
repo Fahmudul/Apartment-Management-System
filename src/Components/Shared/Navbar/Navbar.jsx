@@ -6,12 +6,14 @@ import useAuthInfo from "../../../Hooks/useAuthInfo/useAuthInfo";
 import ButtonPrimary from "../../ButtonPrimary/ButtonPrimary";
 import { useState } from "react";
 import Dropdown from "../../Dropdown/Dropdown";
+import Loader from "../../Loader/Loader";
+import LoaderNavbar from "../../LoaderNavbar/LoaderNavbar";
 const Navbar = () => {
   const [dropDown, setDropDown] = useState(false);
   const handlePress = () => {
     setDropDown(!dropDown);
   };
-  const { user, SignOut } = useAuthInfo();
+  const { user, SignOut, loading } = useAuthInfo();
   //Redirect to home page button
   const home = () => {
     window.location.href = "/";
@@ -62,7 +64,7 @@ const Navbar = () => {
           <ul className="overview ">
             <h3>Overview</h3>
             <li>
-              <NavLink to="/home">
+              <NavLink to="/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -84,7 +86,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/page1">
+              <NavLink to="/appartment">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -121,6 +123,8 @@ const Navbar = () => {
                   </div>
                   {dropDown && <Dropdown />}
                 </>
+              ) : loading ? (
+                <LoaderNavbar />
               ) : (
                 <>
                   <Link

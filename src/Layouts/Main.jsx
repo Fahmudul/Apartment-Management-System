@@ -4,7 +4,7 @@ import "./Main.css";
 import Footer from "../Components/Shared/Footer/Footer";
 const Main = () => {
   return (
-    <div className="main-screen">
+    <div className="main-screen min-h-screen">
       <Navbar />
       <Outlet />
       <Footer />

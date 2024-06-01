@@ -3,6 +3,8 @@ import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home";
 import LoginSignUp from "../Pages/LoginSignUp/LoginSignUp";
 import ErrorElement from "../Pages/Error/ErrorElement";
+import Appartment from "../Pages/Appartment/Appartment";
+import PrivateRoutes from "./PrivateRoutes";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -12,6 +14,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/appartment",
+        element: (
+          <PrivateRoutes>
+            <Appartment />
+          </PrivateRoutes>
+        ),
       },
     ],
   },

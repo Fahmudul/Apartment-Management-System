@@ -4,8 +4,11 @@ import { Helmet } from "react-helmet";
 import useAuthInfo from "../../Hooks/useAuthInfo/useAuthInfo";
 import getImageUrl from "../../Utils/GetImageUrl/GetImageUrl";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const LoginSignUp = () => {
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  // console.log(from);
   useEffect(() => {
     const currentTheme = localStorage.getItem("selectedTheme");
     // console.log(currentTheme)
@@ -25,7 +28,7 @@ const LoginSignUp = () => {
         // console.log(user);
         toast.success("Logged In Successfully!");
         setTimeout(() => {
-          navigate("/");
+          navigate(from, { replace: true });
         }, 1000);
       })
       .catch((error) => {
