@@ -43,7 +43,7 @@
   left: -50%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(-45deg, #caaa6d, #93673b);
+  background: var(--card_color);
   /* #caaa6d */
   z-index: 6;
   transform: translateX(100%);
@@ -81,7 +81,7 @@ form.sign-up-form {
 }
 .title {
   font-size: 35px;
-  color: #af9484;
+  color: var(--text_color);
   margin-bottom: 10px;
 }
 .input-field {
@@ -89,7 +89,7 @@ form.sign-up-form {
   height: 50px;
   background: #f0f0f0;
   margin: 10px 0;
-  border: 2px solid #987c6a;
+  border: 2px solid var(--text_color);
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -156,6 +156,24 @@ input[type="file"] {
 .social-text {
   margin: 10px 0;
   font-size: 16px;
+}
+
+.social-text {
+  /* Gradient for the "before" pseudo-element */
+  &::before {
+    content: ""; /* Ensure content is generated for the pseudo-element */
+    background-image: linear-gradient(to right, gray(100), #804545);
+    margin-right: 2px; /* Adjust the margin as needed */
+    min-width: 70px;
+  }
+
+  /* Gradient for the "after" pseudo-element */
+  &::after {
+    content: ""; /* Ensure content is generated for the pseudo-element */
+    background-image: linear-gradient(to right, gray(100), #804545);
+    margin-left: 2px; /* Adjust the margin as needed */
+    min-width: 70px;
+  }
 }
 .social-media {
   display: flex;

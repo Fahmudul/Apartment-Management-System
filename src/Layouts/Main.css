@@ -4,3 +4,19 @@
 .theme-controller {
   color: var(--text_color);
 }
+
+.btnColor {
+  background-color: var(--button_color);
+}
+
+.gradientBg {
+  background-color: var(--side_bar_background);
+}
+
+.textColor {
+  color: var(--text_color);
+}
+
+.card_color {
+  background-color: var(--card_color);
+}

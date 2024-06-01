@@ -2,10 +2,15 @@ import { useEffect } from "react";
 import "./style.css";
 import { Helmet } from "react-helmet";
 import useAuthInfo from "../../Hooks/useAuthInfo/useAuthInfo";
-import getImageUrl from "../../Components/GetImageUrl/GetImageUrl";
+import getImageUrl from "../../Utils/GetImageUrl/GetImageUrl";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 const LoginSignUp = () => {
+  useEffect(() => {
+    const currentTheme = localStorage.getItem("selectedTheme");
+    // console.log(currentTheme)
+    document.querySelector("body").setAttribute("data-theme", currentTheme);
+  });
   const { CreateUser, SignIn, SignInWithGoogle, UpdateUserProfile, SignOut } =
     useAuthInfo();
   const navigate = useNavigate();
@@ -154,7 +159,7 @@ const LoginSignUp = () => {
                 className=" absolute left-10 top-[11px] ml-2"
               />
             </div>
-            <input type="submit" value="Login" className="btnn " />
+            <input type="submit" value="Sign In" className="btnn " />
 
             <p
               className="social-text before:bg-gradient-to-r before:min-w-[70px] after:min-w-[70px] from-gray-100 to-[#804545] before:mr-2 after:bg-gradient-to-r from-gray-100 to-[#804545] after:ml-2"
@@ -375,7 +380,7 @@ const LoginSignUp = () => {
               style={{ marginTop: "25px" }}
             />
             <p
-              className="social-text before:bg-gradient-to-r before:min-w-[70px] after:min-w-[70px] from-gray-100 to-[#804545] before:mr-2 after:bg-gradient-to-r from-gray-100 to-[#804545] after:ml-2"
+              className="social-text  before:min-w-[70px] after:min-w-[70px] before:bg-gradient-to-r from-gray-100 to-[#804545] before:mr-2 after:bg-gradient-to-r from-gray-100 to-[#804545] after:ml-2"
               style={{ margin: "20px 0px" }}
             >
               Or Sign in with
@@ -491,7 +496,13 @@ const LoginSignUp = () => {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
                 accusantium dolor, eos incidunt minima iure?
               </p>
-              <button className="btnn" id="sign-in-btn">
+              <button
+                className="btnn  font-semibold"
+                style={{
+                  color: "#fff",
+                }}
+                id="sign-in-btn"
+              >
                 Sign in
               </button>
             </div>

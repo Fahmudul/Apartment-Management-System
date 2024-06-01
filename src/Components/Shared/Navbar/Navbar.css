@@ -8,7 +8,6 @@
 }
 .profile-img {
   display: none;
-  /* text-decoration: ; */
 }
 /* Nav */
 .navbar {
@@ -66,7 +65,7 @@
 .navbar a:hover {
   color: var(--button_color_hover);
 }
-.navbar a::after {
+/* .navbar a::after {
   content: "";
   display: block;
   height: 3px;
@@ -76,6 +75,12 @@
 }
 .navbar a:hover::after {
   width: 100%;
+} */
+
+#sign-in-btn {
+  background-color: var(--button_color);
+  color: var(--link_text_color);
+  font-weight: 700;
 }
 #check,
 .menu {
@@ -90,7 +95,7 @@
 }
 
 /* Responsive */
-@media (max-width: 750px) {
+@media (max-width: 850px) {
   .nav-items {
     position: fixed;
     top: 0;
@@ -99,11 +104,14 @@
     width: 250px;
     flex-direction: column;
     justify-content: space-evenly;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(5px);
     background: var(--side_bar_background);
     padding: 2rem;
     right: -250px;
     transition: all ease-in-out 500ms;
+  }
+  .profile {
+    display: none;
   }
   .overview,
   .account {
@@ -147,7 +155,28 @@
     right: 2.5rem;
     z-index: 99;
   }
+
+  .profile-img {
+    display: block;
+  }
   #check:checked ~ .nav-items {
     right: 0;
+  }
+}
+.slideDown {
+  animation: slide_down 1s ease-in-out;
+  /* top: -112px; */
+}
+
+@keyframes slide_down {
+  from {
+    /* height: 0; */
+    top: -100px;
+    opacity: 0;
+  }
+  to {
+    /* height: 112px; */
+    top: 0;
+    opacity: 1;
   }
 }

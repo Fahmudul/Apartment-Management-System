@@ -1,11 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import DarkLightSwitch from "../../DarkLightSwitch/DarkLightSwitch";
 import webLogo from "../../../assets/buildingLogo.svg";
+import useAuthInfo from "../../../Hooks/useAuthInfo/useAuthInfo";
+import ButtonPrimary from "../../ButtonPrimary/ButtonPrimary";
+import { useState } from "react";
+import Dropdown from "../../Dropdown/Dropdown";
 const Navbar = () => {
+  const [dropDown, setDropDown] = useState(false);
+  const handlePress = () => {
+    setDropDown(!dropDown);
+  };
+  const { user, SignOut } = useAuthInfo();
   //Redirect to home page button
   const home = () => {
     window.location.href = "/";
+  };
+
+  const handleSignout = () => {
+    SignOut()
+      .then(() => {})
+      .catch((error) => {
+        console.error(error);
+      });
   };
   return (
     <div className="w-[90%]  mx-auto mb-10 pt-3">
@@ -32,7 +49,16 @@ const Navbar = () => {
           <img src={webLogo} alt="logo" />
         </div>
         <div className="nav-items flex">
-          <div className="profile-img">hello</div>
+          <div className="profile-img textColor text-center min-h-[120px] ">
+            <img
+              className="w-20 rounded-full mb-2"
+              src={user?.photoURL}
+              alt=""
+            />
+            <span className="mt-5 font-mono text-xl tracking-[10px] italic font-semibold">
+              {user?.displayName}
+            </span>
+          </div>
           <ul className="overview ">
             <h3>Overview</h3>
             <li>
@@ -73,56 +99,40 @@ const Navbar = () => {
                     d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"
                   />
                 </svg>
-                Dashboard
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/page2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-bar-chart-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z" />
-                </svg>
-                Rates
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/page3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-envelope-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
-                </svg>
-                Contact
+                Appartment
               </NavLink>
             </li>
           </ul>
           <ul className="account">
             <h3>Account</h3>
-            <li className="flex items-center">
-              <NavLink to="/page-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-bell-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
-                </svg>
-                Notifications
-              </NavLink>
+            <li className="relative">
+              {user ? (
+                <>
+                  <div
+                    className="avatar online profile hover:scale-105"
+                    onClick={handlePress}
+                  >
+                    <div
+                      className="w-10 mr-2 rounded-full hover:shadow-xl cursor-pointer "
+                      title={user?.displayName}
+                    >
+                      <img className="hover:shadow-xl" src={user?.photoURL} />
+                    </div>
+                  </div>
+                  {dropDown && <Dropdown />}
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className="  w-full rounded-full py-1 active:scale-95 transition-all duration-300 px-3 mt-1"
+                    onClick={handleSignout}
+                    id="sign-in-btn"
+                  >
+                    Sign In
+                  </Link>
+                </>
+              )}
             </li>
             <li>
               <DarkLightSwitch />
