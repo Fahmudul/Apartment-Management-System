@@ -1,3 +1,6 @@
+* {
+  font-family: "Josefin Sans";
+}
 .main-screen {
   background-color: var(--body_background);
 }
@@ -19,4 +22,8 @@
 
 .card_color {
   background-color: var(--card_color);
+}
+
+.outline_color {
+  outline: var(--buton_outline);
 }

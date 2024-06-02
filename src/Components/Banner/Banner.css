@@ -1,13 +1,23 @@
 .swiper {
-  width: 30%;
+  /* width: 30%; */
   min-width: 556px;
-  min-height: 500px;
-  max-width: 650px;
+  min-height: 600px;
+  max-width: 700px;
   /* max-height: 650px; */
   height: auto;
   border: 1px solid black;
   /* margin-right: 50px; */
   margin: 0;
+}
+
+.banner-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 3em;
+  /* flex-direction: column; */
+}
+.banner-text {
+  width: 50%;
 }
 .carouselContainer {
   /* width: 100%; */
@@ -18,7 +28,8 @@
   font-size: 18px;
   background: #fff;
   min-height: 500px;
-  max-height: 650px;
+  max-height: 700px;
+
   /* width: 200px; */
 
   /* Center slide text vertically */
@@ -33,7 +44,11 @@
   height: 100%;
   object-fit: cover;
 }
-
+.swiper-slide img:hover {
+  /* cursor: pointer; */
+  transform: scale(1.1);
+  transition: all 0.4s ease-in-out;
+}
 .autoplay-progress {
   position: absolute;
   right: 16px;
@@ -45,7 +60,7 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: var(--swiper-theme-color);
+  color: var(--text_color);
 }
 
 .autoplay-progress svg {
@@ -57,7 +72,7 @@
   width: 100%;
   height: 100%;
   stroke-width: 4px;
-  stroke: var(--swiper-theme-color);
+  stroke: var(--text_color);
   fill: none;
   stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
   stroke-dasharray: 125.6;
@@ -67,16 +82,56 @@
 @media screen and (max-width: 768px) {
   .swiper {
     /* width: 30%; */
-    min-width: 337px;
+    min-width: 325px;
+    width: 100%;
     min-height: 500px;
-    max-width: 650px;
+    max-width: 768px;
     max-height: 650px;
     /* width: 200px;
     height: auto; */
     border: 1px solid black;
     /* margin-right: 50px; */
   }
-  .carouselContainer {
+  .carouselContainer,
+  .banner-text {
     width: 100%;
+  }
+
+  #banner-title {
+    font-size: 120px;
+    line-height: 1.1;
+    font-weight: 400;
+  }
+  .banner-container {
+    display: flex;
+    flex-direction: column-reverse;
+
+    gap: 0;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .swiper {
+    /* width: 30%; */
+    min-width: 325px;
+    width: 100%;
+    min-height: 500px;
+    max-width: 1024px;
+    max-height: 650px;
+    /* width: 200px;
+    height: auto; */
+    border: 1px solid black;
+    /* margin-right: 50px; */
+  }
+
+  .carouselContainer,
+  .banner-text {
+    width: 100%;
+  }
+
+  .banner-container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0;
   }
 }
