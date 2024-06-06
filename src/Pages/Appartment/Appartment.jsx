@@ -37,14 +37,14 @@ const Appartment = () => {
   // console.log(numberOfItemsForButton);
   return (
     <div className="">
-      <div className="mt-[150px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-20 border-2 pt-9 mx-auto px-3 place-items-center">
+      <div className="mt-[150px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-20 border-2 pt-9 mx-auto px-3 place-items-center lg:w-[95%]">
         {appartments.map((item) => (
           <Widget key={item._id} item={item} refetch={refetch} />
         ))}
       </div>
 
       {/* Pagination */}
-      <div className="flex justify-center items-center mt-10 ">
+      <div className="flex justify-center items-center mt-10 overflow-x-auto">
         <button
           className="btnColor  mr-2 p-2 rounded-xl active:scale-95"
           onClick={() => {

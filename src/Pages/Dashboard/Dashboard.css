@@ -1,5 +1,5 @@
 .page.sidebar-2-page {
-  background: #17132a;
+  background: #be0c0c;
 }
 
 .sidebar-2 {
@@ -9,7 +9,7 @@
   left: 0;
   width: 56px;
   height: 100%;
-  background: #4f2cd4;
+  background: var(--side_bar_background);
   transition: width 0.4s;
 }
 

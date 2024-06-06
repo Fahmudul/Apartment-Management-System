@@ -4,16 +4,14 @@
 @tailwind utilities;
 :root {
   --body_background: #ece3ca;
-
   --body_color: #333333;
   --link_color: #666666;
   --logo_title: #d59a51;
   --card_color: #dac3a7;
   --spinner_color: rgb(202, 170, 109);
-
   --text_color: #b18045;
   --testimonial_color: #e2e2e2;
-  --side_bar_background: rgba(0, 0, 0, 0.1);
+  --side_bar_background: rgba(161, 96, 10, 0.5);
   --spinner_dot: #b18045;
   --buton_outline: #b18045;
   --button_color: #b18045;
@@ -26,7 +24,7 @@
   border-style: none;
 }
 [data-theme="dark"] {
-  --side_bar_background: rgba(156, 154, 154, 0.1);
+  --side_bar_background: rgba(12, 10, 161, 0.3);
   --body_background: #1a103d;
   --body_color: #cccccc;
   --link_color: #cccccc;

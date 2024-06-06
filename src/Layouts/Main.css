@@ -27,3 +27,7 @@
 .outline_color {
   outline: var(--buton_outline);
 }
+
+.sideBarColor {
+  background-color: var(--side_bar_background);
+}
