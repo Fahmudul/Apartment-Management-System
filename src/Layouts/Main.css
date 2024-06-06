@@ -19,8 +19,13 @@
 .textColor {
   color: var(--text_color);
 }
+.textColor1 {
+  color: var(--body_color);
+}
+
 .outlinedColor {
-  border: var(--text_color);
+  outline: 2px solid var(--text_color);
+  
 }
 .card_color {
   background-color: var(--card_color);

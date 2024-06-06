@@ -13,6 +13,7 @@ import AggrementRequests from "../Components/AggrementRequests/AggrementRequests
 import Coupon from "../Components/Coupon/Coupon";
 import AdminRoutes from "./AdminRoutes";
 import CommonProfile from "../Pages/Profile/CommonProfile";
+import MakeAnnouncement from "../Components/MakeAnnouncement/MakeAnnouncement";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "announcements",
         element: <Announcements />,
+      },
+      {
+        path: "makeannouncements",
+        element: <MakeAnnouncement />,
       },
       {
         path: "members",

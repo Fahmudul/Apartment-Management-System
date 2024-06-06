@@ -13,7 +13,7 @@ const AdminBar = () => {
         </span>
         <p>My Profile</p>
       </NavLink>
-      <NavLink to="announcements">
+      <NavLink to="makeannouncements">
         <span>
           <MdOutlineAnnouncement className="w-6 h-6" />
         </span>
