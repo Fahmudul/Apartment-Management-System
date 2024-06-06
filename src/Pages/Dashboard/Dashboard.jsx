@@ -53,7 +53,7 @@ const Dashboard = () => {
           </aside>
         </section>
       </div>
-      <div className="bgColor ">
+      <div className="bgColor flex justify-center items-center  flex-1">
         <Outlet></Outlet>
       </div>
     </div>

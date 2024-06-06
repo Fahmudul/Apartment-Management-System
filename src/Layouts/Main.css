@@ -19,7 +19,9 @@
 .textColor {
   color: var(--text_color);
 }
-
+.outlinedColor {
+  border: var(--text_color);
+}
 .card_color {
   background-color: var(--card_color);
 }
@@ -41,8 +43,7 @@
   animation: scale 2s infinite;
 }
 
-
-.image-border{
+.image-border {
   border-radius: 7% 25% 6% 25% / 7% 25% 6% 25%;
 }
 @keyframes scale {
