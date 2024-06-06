@@ -6,6 +6,12 @@ import ErrorElement from "../Pages/Error/ErrorElement";
 import Appartment from "../Pages/Appartment/Appartment";
 import PrivateRoutes from "./PrivateRoutes";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import AdminProfile from "../Pages/Profile/AdminProfile";
+import Announcements from "../Components/Announcements/Announcements";
+import ManageMembers from "../Components/ManageMembers/ManageMembers";
+import AggrementRequests from "../Components/AggrementRequests/AggrementRequests";
+import Coupon from "../Components/Coupon/Coupon";
+import AdminRoutes from "./AdminRoutes";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +39,30 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <Dashboard />,
+    children: [
+      {
+        path: "profile",
+        element: (
+          <AdminRoutes>
+            <AdminProfile />
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "announcements",
+        element: <Announcements />,
+      },
+      {
+        path: "members",
+        element: <ManageMembers />,
+      },
+
+      { path: "requests", element: <AggrementRequests /> },
+      {
+        path: "coupons",
+        element: <Coupon />,
+      },
+    ],
   },
 ]);
 export default router;

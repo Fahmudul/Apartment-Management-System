@@ -14,7 +14,7 @@ const Dropdown = () => {
   return (
     <div className="gradientBg w-40 px-3 py-3 space-y-3 rounded-3xl absolute -right-[55px] slideDown">
       <p className="text-center text-2xl textColor">{user?.displayName}</p>
-      <Link to="/dashboard" className="flex justify-center">
+      <Link to="/dashboard/profile" className="flex justify-center">
         Dashboard
       </Link>
       <button

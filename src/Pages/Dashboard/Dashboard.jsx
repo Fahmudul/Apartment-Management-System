@@ -36,6 +36,12 @@ const Dashboard = () => {
                     )}
                   </span>
                 </button>
+                <h1
+                  className="text-white text-2xl italic font-semibold tracking-widest pl-3 w-full"
+                  // style={{ border: "1px solid red" }}
+                >
+                  CozyNest
+                </h1>
               </header>
               <nav>
                 {data?.role === "admin" && <AdminBar />}

@@ -50,6 +50,9 @@
   gap: 2px;
 }
 
+.sidebar-2 nav > a.active {
+  background: rgb(0 0 0 / 30%);
+}
 .sidebar-2 nav > a {
   display: flex;
   gap: 12px;

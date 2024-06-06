@@ -10,6 +10,8 @@ const useAdmin = () => {
     enabled: !!user,
     queryFn: async () => {
       const { data } = await axiosToken(`/users/${user?.email}`);
+      // clg
+      // console.log(data);
       return data;
     },
   });
