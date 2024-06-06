@@ -1,9 +1,10 @@
 .page.sidebar-2-page {
-  background: #be0c0c;
+  background: var(--side_bar_background);
+  height: 100vh;
 }
 
 .sidebar-2 {
-  position: absolute;
+  position: relative;
   overflow: hidden;
   top: 0;
   left: 0;
@@ -18,7 +19,7 @@
 }
 
 .sidebar-2 .inner {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 260px;

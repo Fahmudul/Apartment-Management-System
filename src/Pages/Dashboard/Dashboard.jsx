@@ -7,6 +7,7 @@ import "../../index.css";
 import AdminBar from "../../Components/AdminBar/AdminBar";
 import UserBar from "../../Components/UserBar/UserBar";
 import MemberBar from "../../Components/MemberBar/MemberBar";
+import { Outlet } from "react-router-dom";
 const Dashboard = () => {
   const { data } = useAdmin();
   useEffect(() => {
@@ -17,8 +18,8 @@ const Dashboard = () => {
   // console.log(data?.role);
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="main-screen flex min-w-screen min-h-screen">
-      <div>
+    <div className="main-screen flex min-w-screen min-h-screen ">
+      <div className="relative">
         <section className="page sidebar-2-page">
           <aside className={`sidebar-2 ${isOpen ? "open" : ""}`}>
             <div className="inner">
@@ -52,7 +53,9 @@ const Dashboard = () => {
           </aside>
         </section>
       </div>
-      <div className="bg-red-500 "></div>
+      <div className="bgColor ">
+        <Outlet></Outlet>
+      </div>
     </div>
   );
 };

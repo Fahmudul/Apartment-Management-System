@@ -31,3 +31,28 @@
 .sideBarColor {
   background-color: var(--side_bar_background);
 }
+
+.custom-shadow {
+  border-radius: 39px;
+  /* background: #ffffff; */
+  box-shadow: 5px 5px 15px #757070, -5px -5px 15px #757070;
+}
+.animation-scale {
+  animation: scale 2s infinite;
+}
+
+
+.image-border{
+  border-radius: 7% 25% 6% 25% / 7% 25% 6% 25%;
+}
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

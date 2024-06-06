@@ -7,12 +7,12 @@ import useAdmin from "../Hooks/useAdmin/useAdmin";
 const AdminRoutes = ({ children }) => {
   //Checking if user is admin
   const { data } = useAdmin();
-  console.log(data);
+  // console.log(data.role);
   const location = useLocation();
   const { user, loading } = useAuthInfo(UserAuthContext);
   if (loading) return <Loader />;
 
-  if (user) return children;
+  if (user && data?.role === "user") return children;
 
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;

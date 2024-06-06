@@ -7,26 +7,26 @@ import { GrHistory } from "react-icons/gr";
 const MemberBar = () => {
   return (
     <>
-      <NavLink type="button">
+      <NavLink to="profileM">
         <span className="material-symbols-outlined">
           <RiProfileLine className="w-6 h-6" />
         </span>
         <p>My Profile</p>
       </NavLink>
-      <NavLink>
+      <NavLink to="announcements">
         <span>
           <MdOutlineAnnouncement className="w-6 h-6" />
         </span>
         <p>Announcements</p>
       </NavLink>
 
-      <NavLink>
+      <NavLink to="payment">
         <span>
           <MdOutlinePayment className="w-6 h-6" />
         </span>
         <p>Make payment</p>
       </NavLink>
-      <NavLink>
+      <NavLink to="paymentHistory">
         <span>
           <GrHistory className="w-6 h-6" />
         </span>

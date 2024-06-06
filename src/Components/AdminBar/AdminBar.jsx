@@ -7,7 +7,7 @@ import { VscRequestChanges } from "react-icons/vsc";
 const AdminBar = () => {
   return (
     <>
-      <NavLink to="profile">
+      <NavLink to="profileA">
         <span className="material-symbols-outlined">
           <RiProfileLine className="w-6 h-6" />
         </span>

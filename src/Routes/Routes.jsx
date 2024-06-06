@@ -12,6 +12,7 @@ import ManageMembers from "../Components/ManageMembers/ManageMembers";
 import AggrementRequests from "../Components/AggrementRequests/AggrementRequests";
 import Coupon from "../Components/Coupon/Coupon";
 import AdminRoutes from "./AdminRoutes";
+import CommonProfile from "../Pages/Profile/CommonProfile";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,10 +39,22 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoutes>
+        <Dashboard />
+      </PrivateRoutes>
+    ),
     children: [
       {
         path: "profile",
+        element: <CommonProfile />,
+      },
+      {
+        path: "profileM",
+        element: <CommonProfile />,
+      },
+      {
+        path: "profileA",
         element: (
           <AdminRoutes>
             <AdminProfile />
