@@ -12,7 +12,7 @@ const AdminRoutes = ({ children }) => {
   const { user, loading } = useAuthInfo(UserAuthContext);
   if (loading) return <Loader />;
 
-  if (user && data?.role === "user") return children;
+  if (user && data?.role === "admin") return children;
 
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;

@@ -1,4 +1,4 @@
-import { RiDeleteBin4Line } from "react-icons/ri";
+import { IoIosRemoveCircleOutline } from "react-icons/io";
 const ManageMembers = () => {
   return (
     <div className="w-[90%] mx-auto mt-5">
@@ -6,7 +6,7 @@ const ManageMembers = () => {
         Number of Members: 5
       </h1>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table table-zebra ">
           {/* head */}
           <thead>
             <tr>
@@ -19,7 +19,7 @@ const ManageMembers = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
+            <tr className="">
               <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">
@@ -40,14 +40,14 @@ const ManageMembers = () => {
                 <br />
               </td>
               <td className="text-lg ">
-                <span className="outlinedColor px-2 py-1 rounded-full ">
+                <span className="outlinedColor px-2 py-1 rounded-full uppercase">
                   Member
                 </span>
               </td>
               <td className="text-lg">01/01/2020</td>
-              <th>
+              <th className="pl-7">
                 <button className="active:scale-95">
-                  <RiDeleteBin4Line className="w-6 h-6 hover:fill-red-500" />
+                  <IoIosRemoveCircleOutline className="w-6 h-6 hover:fill-red-500" />
                 </button>
               </th>
             </tr>

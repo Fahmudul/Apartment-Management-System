@@ -68,14 +68,25 @@ const router = createBrowserRouter([
       },
       {
         path: "makeannouncements",
-        element: <MakeAnnouncement />,
+        element: (
+          <AdminRoutes>
+            <MakeAnnouncement />
+          </AdminRoutes>
+        ),
       },
       {
         path: "members",
         element: <ManageMembers />,
       },
 
-      { path: "requests", element: <AggrementRequests /> },
+      {
+        path: "requests",
+        element: (
+          <AdminRoutes>
+            <AggrementRequests />
+          </AdminRoutes>
+        ),
+      },
       {
         path: "coupons",
         element: <Coupon />,

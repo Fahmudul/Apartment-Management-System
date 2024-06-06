@@ -15,7 +15,6 @@ const CommonProfile = () => {
     <div className="w-full flex justify-center min-h-screen items-center" >
       <div
         className=" p-5 flex w-[80%] h-[60%]"
-        // style={{ border: "1px solid" }}
       >
         <div className="lg:w-[35%] ">
           <div className="containerrr ">
