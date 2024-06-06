@@ -5,14 +5,6 @@ import { useState } from "react";
 
 const Appartment = () => {
   const axiosToken = useAxiosToken();
-  const { data: appartments = [], refetch } = useQuery({
-    queryKey: ["appartment"],
-    queryFn: async () => {
-      const { data } = await axiosToken("/allRooms");
-      // console.log(data);
-      return data;
-    },
-  });
 
   //Pagination configuration
   const { data: roomscount } = useQuery({
@@ -31,11 +23,22 @@ const Appartment = () => {
     { length: Pages },
     (_, index) => index + 1
   );
-  console.log(numberOfItemsForButton);
+
+  const { data: appartments = [], refetch } = useQuery({
+    queryKey: ["appartment", itemsPerPage, currentPage],
+    queryFn: async () => {
+      const { data } = await axiosToken(
+        `/allRooms/?skip=${currentPage}&limit=${itemsPerPage}`
+      );
+      // console.log(data);
+      return data;
+    },
+  });
+  // console.log(numberOfItemsForButton);
   return (
     <div className="">
       <div className="mt-[150px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-20 border-2 pt-9 mx-auto px-3 place-items-center">
-        {appartments.slice(0, 8).map((item) => (
+        {appartments.map((item) => (
           <Widget key={item._id} item={item} refetch={refetch} />
         ))}
       </div>
