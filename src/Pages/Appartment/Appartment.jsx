@@ -42,13 +42,50 @@ const Appartment = () => {
 
       {/* Pagination */}
       <div className="flex justify-center items-center mt-10 ">
-        <button className="btnColor  mr-2 p-2 rounded-xl active:scale-95">Prev</button>
+        <button
+          className="btnColor  mr-2 p-2 rounded-xl active:scale-95"
+          onClick={() => {
+            if (currentPage > 1) {
+              setCurrentPage(currentPage - 1);
+            }
+          }}
+        >
+          Prev
+        </button>
         {numberOfItemsForButton.map((number, idx) => (
-          <button key={idx} className="btnColor w-8 mr-2 p-2 rounded-xl active:scale-95">
+          <button
+            key={idx}
+            className={`btnColor w-8 mr-2 p-2 rounded-xl active:scale-95 ${
+              currentPage === number && "bg-[#b18045] text-white"
+            }`}
+            onClick={() => setCurrentPage(number)}
+          >
             {number}
           </button>
         ))}
-        <button className="btnColor  mr-2 p-2 rounded-xl active:scale-95">Next</button>
+        <button
+          className="btnColor  mr-2 p-2 rounded-xl active:scale-95"
+          onClick={() => {
+            if (currentPage < Pages) {
+              setCurrentPage(currentPage + 1);
+            }
+          }}
+        >
+          Next
+        </button>
+        <select
+          name="itemsPerPage"
+          id=""
+          className=" mr-2 p-2 rounded-xl active:scale-95"
+          onChange={(e) => {
+            setItemsPerPage(e.target.value);
+            setCurrentPage(1);
+          }}
+        >
+          <option value="8">6</option>
+          <option value="16">16</option>
+          <option value="20">20</option>
+        </select>
       </div>
     </div>
   );
