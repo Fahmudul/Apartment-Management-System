@@ -56,7 +56,7 @@ const LoginSignUp = () => {
                   console.log(error);
                 });
               window.location.reload();
-            }, 1000);
+            }, 1500);
           })
           .catch((error) => {
             console.log(error);

@@ -5,6 +5,7 @@ import LoginSignUp from "../Pages/LoginSignUp/LoginSignUp";
 import ErrorElement from "../Pages/Error/ErrorElement";
 import Appartment from "../Pages/Appartment/Appartment";
 import PrivateRoutes from "./PrivateRoutes";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginSignUp />,
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
   },
 ]);
 export default router;

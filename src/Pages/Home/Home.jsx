@@ -1,8 +1,7 @@
 import { Helmet } from "react-helmet";
-import DarkLightSwitch from "../../Components/DarkLightSwitch/DarkLightSwitch";
-import wave from "../../assets/Wave.svg";
 import Banner from "../../Components/Banner/Banner";
 import AboutBuilding from "../../Components/AboutBuilding/AboutBuilding";
+import MapContainer from "../../Components/MapContainer/MapContainer";
 const Home = () => {
   return (
     <div className=" min-h-screen w-[90%]  mx-auto ">
@@ -15,6 +14,9 @@ const Home = () => {
       </div>
       <div className="lg:mt-[100px]">
         <AboutBuilding />
+      </div>
+      <div className="googleMap">
+        <MapContainer />
       </div>
     </div>
   );

@@ -111,7 +111,7 @@ const Navbar = () => {
               {user ? (
                 <>
                   <div
-                    className="avatar online profile hover:scale-105"
+                    className="avatar online profile hover:scale-105 z-[100]"
                     onClick={handlePress}
                   >
                     <div
