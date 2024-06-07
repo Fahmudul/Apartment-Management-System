@@ -25,7 +25,6 @@
 
 .outlinedColor {
   outline: 2px solid var(--text_color);
-
 }
 .card_color {
   background-color: var(--card_color);
@@ -48,7 +47,9 @@
   animation: scale 2s infinite;
 }
 
-
+.button-hover {
+  color: var(--button_color_hover);
+}
 
 .image-border {
   border-radius: 7% 25% 6% 25% / 7% 25% 6% 25%;

@@ -29,7 +29,8 @@
 }
 
 .subscribe input,
-textarea {
+textarea,
+.coupon-field input {
   border: none;
   border-bottom: 1px solid var(--button_color_hover);
   padding: 10px;
@@ -39,13 +40,15 @@ textarea {
 }
 
 .subscribe input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
+textarea::-webkit-input-placeholder,
+.coupon-field input::-webkit-input-placeholder {
   color: var(--text_color);
   font-size: 18px;
 }
 
 .subscribe input:focus,
-textarea:focus {
+textarea:focus,
+.coupon-field input {
   outline: none;
   border-bottom: 1px solid var(--button_color);
 }
