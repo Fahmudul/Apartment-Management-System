@@ -16,6 +16,7 @@ import CommonProfile from "../Pages/Profile/CommonProfile";
 import MakeAnnouncement from "../Pages/MakeAnnouncement/MakeAnnouncement";
 import MemberRoutes from "./MemberRoutes";
 import Payments from "../Pages/Payments/Payments";
+import CheckOutPage from "../Pages/CheckOutPage/CheckOutPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LoginSignUp />,
   },
+  // Dashboard Routes
   {
     path: "dashboard",
     element: (
@@ -111,6 +113,10 @@ const router = createBrowserRouter([
         element: <Coupon />,
       },
     ],
+  },
+  {
+    path: "/checkout",
+    element: <CheckOutPage />,
   },
 ]);
 export default router;

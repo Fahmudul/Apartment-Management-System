@@ -63,7 +63,7 @@ const CommonProfile = () => {
             </Link>
           </div>
         </div>
-        <div className="flex-1 flex justify-center items-center shadow-2xl rounded-3xl ml-5">
+        <div className="flex-1 flex justify-center items-center shadow-2xl rounded-3xl ml-5 card_color">
           <div className="w-[90%] h-[80%]">
             <div className="flex justify-between">
               <h1 className="text-3xl font-bold">

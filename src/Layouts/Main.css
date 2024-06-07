@@ -15,6 +15,9 @@
 .gradientBg {
   background-color: var(--side_bar_background);
 }
+.backgroundColor {
+  background-color: var(--body_background);
+}
 
 .textColor {
   color: var(--text_color);

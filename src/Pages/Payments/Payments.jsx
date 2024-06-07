@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import "./Payment.css";
 import useAuthInfo from "../../Hooks/useAuthInfo/useAuthInfo";
 import useAxiosToken from "../../Hooks/useAxiosToken/useAxiosToken";
+import { Link } from "react-router-dom";
 const Payments = () => {
   const { user } = useAuthInfo();
   // console.log(user?.email);
@@ -80,7 +81,9 @@ const Payments = () => {
               </div>
             </div>
           </div>
-          <button className="enter text-base">Pay Now</button>
+          <Link to='/checkout' className="enter text-base flex justify-center items-center">
+            Pay Now
+          </Link>
         </div>
       </div>
     </div>
