@@ -1,15 +1,16 @@
 import { IoIosRemoveCircleOutline } from "react-icons/io";
+import "./Member.css";
 const ManageMembers = () => {
   return (
-    <div className="w-[90%] mx-auto mt-5">
+    <div className="w-[90%] mx-auto mt-5 ">
       <h1 className="text-3xl font-semibold italic mb-5">
         Number of Members: 5
       </h1>
-      <div className="overflow-x-auto">
-        <table className="table table-zebra ">
+      <div className="overflow-x-auto   px-1 py-2">
+        <table className="table" style={{ width: "90%" }}>
           {/* head */}
           <thead>
-            <tr>
+            <tr className="">
               <th className="text-lg">Name</th>
               <th className="text-lg">Email</th>
               <th className="text-lg">Role</th>

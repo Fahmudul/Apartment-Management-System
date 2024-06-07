@@ -18,7 +18,7 @@ const Dashboard = () => {
   // console.log(data?.role);
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="main-screen flex min-w-screen min-h-screen ">
+    <div className="main-screen bgColor flex min-w-screen min-h-screen ">
       <div className="relative">
         <section className="page sidebar-2-page">
           <aside className={`sidebar-2 ${isOpen ? "open" : ""}`}>
@@ -53,7 +53,7 @@ const Dashboard = () => {
           </aside>
         </section>
       </div>
-      <div className="bgColor flex-1">
+      <div className="bgColor flex-1" style={{ width: "85%" }}>
         <Outlet></Outlet>
       </div>
     </div>
