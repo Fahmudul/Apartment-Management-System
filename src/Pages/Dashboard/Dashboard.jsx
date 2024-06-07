@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import useAdmin from "../../Hooks/useAdmin/useAdmin";
 import "./Dashboard.css";
-import { RiMenu2Fill } from "react-icons/ri";
+import { RiMenu2Fill, RiProfileLine } from "react-icons/ri";
 import { IoCloseSharp } from "react-icons/io5";
+import { RiHome3Line } from "react-icons/ri";
 import "../../index.css";
 import AdminBar from "../../Components/AdminBar/AdminBar";
 import UserBar from "../../Components/UserBar/UserBar";
 import MemberBar from "../../Components/MemberBar/MemberBar";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
+import { RxExit } from "react-icons/rx";
 const Dashboard = () => {
   const { data } = useAdmin();
   useEffect(() => {
@@ -21,8 +23,8 @@ const Dashboard = () => {
     <div className="main-screen bgColor flex min-w-screen min-h-screen ">
       <div className="relative">
         <section className="page sidebar-2-page">
-          <aside className={`sidebar-2 ${isOpen ? "open" : ""}`}>
-            <div className="inner">
+          <aside className={`sidebar-2 ${isOpen ? "open" : ""} h-screen`}>
+            <div className="inner h-screen">
               <header>
                 <button
                   type="button"
@@ -48,6 +50,21 @@ const Dashboard = () => {
                 {data?.role === "admin" && <AdminBar />}
                 {data?.role === "user" && <UserBar />}
                 {data?.role === "member" && <MemberBar />}
+                <>
+                  {" "}
+                  <NavLink to="/" className="absolute bottom-14">
+                    <span className="material-symbols-outlined">
+                      <RiHome3Line className="w-6 h-6" />
+                    </span>
+                    <p>Home</p>
+                  </NavLink>
+                  <button className="absolute bottom-2" id="logoutBtn">
+                    <span className="material-symbols-outlined">
+                      <RxExit className="w-6 h-6" />
+                    </span>
+                    <p>Logout</p>
+                  </button>
+                </>
               </nav>
             </div>
           </aside>

@@ -13,7 +13,6 @@
   background: var(--side_bar_background);
   transition: width 0.4s;
   height: 100%;
-
 }
 
 .sidebar-2.open {
@@ -70,8 +69,23 @@
   border-radius: 8px;
   color: #f9f9f9;
 }
+#logoutBtn {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  height: 44px;
+  width: 44px;
+  font-family: "Poppins";
+  font-size: 16px;
+  text-transform: capitalize;
+  line-height: 1;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: #f9f9f9;
+}
 
-.sidebar-2 nav > a:hover {
+.sidebar-2 nav > a:hover,
+button:hover {
   background: rgb(0 0 0 / 30%);
 }
 

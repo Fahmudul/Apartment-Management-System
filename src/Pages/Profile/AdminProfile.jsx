@@ -14,7 +14,7 @@ const AdminProfile = () => {
       <div className="w-full flex justify-center min-h-screen items-center ">
         <div className="xsm:p-2 lg:p-5 flex xsm:w-[90%] lg:w-[80%] lg:h-[60%]  xsm:flex-col lg:flex-row">
           <div className="lg:w-[35%] ">
-            <div className="containerrr ">
+            <div className="containerr ">
               <div
                 className="card_box w-[370px] h-[400px] image-border shadow-2xl"
                 style={{

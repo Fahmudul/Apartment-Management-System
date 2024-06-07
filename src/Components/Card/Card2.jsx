@@ -1,10 +1,15 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import room from "../../assets/sampleImage.png";
 import { useMutation } from "@tanstack/react-query";
 import useAuthInfo from "../../Hooks/useAuthInfo/useAuthInfo";
+import useAxiosToken from "../../Hooks/useAxiosToken/useAxiosToken";
+import { toast } from "react-toastify";
+
 export default function Widget({ item, refetch }) {
   const { user } = useAuthInfo();
+  const axiosToken = useAxiosToken();
   const { floor_no, block_name, apartment_no, rent, description, id } = item;
   const [theme, setTheme] = useState("");
   useEffect(() => {
@@ -14,9 +19,22 @@ export default function Widget({ item, refetch }) {
 
   // Make Agrement Request using Tan Stack useMutation
   const { mutateAsync } = useMutation({
-    mutationFn: async () => {},
-    onSuccess: () => {
+    mutationFn: async (agreementDetails) => {
+      const { data } = await axiosToken.post(
+        `/agreements/?email=${user?.email}`,
+        agreementDetails
+      );
+      console.log(data["insertedId"]);
+      return data;
+    },
+    onSuccess: (data) => {
+      if (data["insertedId"]) {
+        toast.success("Agreement Requested Successfully");
+      }
       refetch();
+    },
+    onError: (error) => {
+      toast.error(error?.response?.data?.message);
     },
   });
   const handleAgreement = async () => {
@@ -27,12 +45,12 @@ export default function Widget({ item, refetch }) {
       apartment_no,
       rent,
       description,
-      customerName: user.displayName,
-      customerEmail: user.email,
+      customerName: user?.displayName,
+      customerEmail: user?.email,
       status: "pending",
     };
 
-    // await mutateAsync();
+    await mutateAsync(agreementDetails);
   };
   return (
     <div className="lg:w-[384px] w-[345px] min-h-[390px] relative card_color text-white rounded-lg shadow-2xl hover:scale-105 transition-transform duration-300 ">
@@ -76,5 +94,6 @@ Widget.propTypes = {
     rent: PropTypes.number,
     description: PropTypes.string,
     id: PropTypes.number,
+    refetch: PropTypes.func,
   }).isRequired,
 };

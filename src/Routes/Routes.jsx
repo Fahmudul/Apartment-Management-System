@@ -7,13 +7,15 @@ import Appartment from "../Pages/Appartment/Appartment";
 import PrivateRoutes from "./PrivateRoutes";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AdminProfile from "../Pages/Profile/AdminProfile";
-import Announcements from "../Components/Announcements/Announcements";
-import ManageMembers from "../Components/ManageMembers/ManageMembers";
-import AggrementRequests from "../Components/AggrementRequests/AggrementRequests";
-import Coupon from "../Components/Coupon/Coupon";
+import Announcements from "../Pages/Announcements/Announcements";
+import ManageMembers from "../Pages/ManageMembers/ManageMembers";
+import AggrementRequests from "../Pages/AggrementRequests/AggrementRequests";
+import Coupon from "../Pages/Coupon/Coupon";
 import AdminRoutes from "./AdminRoutes";
 import CommonProfile from "../Pages/Profile/CommonProfile";
-import MakeAnnouncement from "../Components/MakeAnnouncement/MakeAnnouncement";
+import MakeAnnouncement from "../Pages/MakeAnnouncement/MakeAnnouncement";
+import MemberRoutes from "./MemberRoutes";
+import Payments from "../Pages/Payments/Payments";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -52,8 +54,25 @@ const router = createBrowserRouter([
       },
       {
         path: "profileM",
-        element: <CommonProfile />,
+        element: (
+          <MemberRoutes>
+            <CommonProfile />
+          </MemberRoutes>
+        ),
       },
+      {
+        path: "payment",
+        element: (
+          <MemberRoutes>
+            <Payments />
+          </MemberRoutes>
+        ),
+      },
+      {
+        path: "paymentHistory",
+        element: <div>History</div>,
+      },
+
       {
         path: "profileA",
         element: (

@@ -87,7 +87,7 @@ const LoginSignUp = () => {
   useEffect(() => {
     const sign_in_btn = document.querySelector("#sign-in-btn");
     const sign_up_btn = document.querySelector("#sign-up-btn");
-    const container = document.querySelector(".containerr");
+    const container = document.querySelector(".containerrr");
     const sign_in_btn2 = document.querySelector("#sign-in-btn2");
     const sign_up_btn2 = document.querySelector("#sign-up-btn2");
     sign_up_btn.addEventListener("click", () => {
@@ -109,7 +109,7 @@ const LoginSignUp = () => {
         <title>Damn | Sign in-Sign up</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
-      <div className="containerr">
+      <div className="containerrr">
         <div className="signin-signup">
           {/*Sign In Form*/}
           <form onSubmit={handleSignIn} className="form sign-in-form">
@@ -491,7 +491,7 @@ const LoginSignUp = () => {
             </p>
           </form>
         </div>
-        <div className="panels-containerr">
+        <div className="panels-containerrr">
           <div className="panel left-panel">
             <div className="content">
               <h3>Member of Brand?</h3>

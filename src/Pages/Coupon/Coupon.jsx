@@ -1,10 +1,10 @@
 import { SlCalender } from "react-icons/sl";
-import "../MakeAnnouncement/Announcements.css";
+import "../../Pages/MakeAnnouncement/Announcements.css";
 import { IoSearch } from "react-icons/io5";
-import ButtonPro from "../ButtonPro/ButtonPro";
+import ButtonPro from "../../Components/ButtonPro/ButtonPro";
 import { BiSolidCoupon } from "react-icons/bi";
 import { RxCross2 } from "react-icons/rx";
-import "../ManageMembers/Member.css";
+import "../../Pages/ManageMembers/Member.css";
 import "./Coupon.css";
 import { useState } from "react";
 const Coupon = () => {
@@ -80,7 +80,7 @@ const Coupon = () => {
               <RxCross2 className=" textColor w-6 h-6 active:scale-95 transition-all duration-300  cursor-pointer" />
             </button>
             <div className="popup">
-              <form className="form relative">
+              <form className="formm relative">
                 <p className="text-center w-full textColor font-semibold text-xl">
                   Create Coupon
                 </p>

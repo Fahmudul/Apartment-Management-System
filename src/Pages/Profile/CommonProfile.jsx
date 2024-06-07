@@ -17,7 +17,7 @@ const CommonProfile = () => {
         className=" p-5 flex w-[80%] h-[60%]"
       >
         <div className="lg:w-[35%] ">
-          <div className="containerrr ">
+          <div className="containerr ">
             <div
               className="card_box w-[400px] h-[450px] image-border shadow-2xl"
               style={{

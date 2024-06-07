@@ -1,0 +1,140 @@
+.loginn {
+  color: var(--text_color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.carddd {
+  /* min-height: 350px; */
+  /* width: 300px; */
+  flex-direction: column;
+  color: var(--text_color);
+  gap: 35px;
+  background: var(--card_color);
+  box-shadow: 5px 5px 15px #757070, -5px -5px 15px #757070;
+  border-radius: 8px;
+}
+
+.inputBoxx {
+  position: relative;
+  width: 250px;
+}
+.inputBoxxRight {
+  position: relative;
+  width: 250px;
+}
+
+.inputBoxx input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  /* color:  var(--text_color); */
+  font-size: 1em;
+  background: transparent;
+  border-left: 2px solid var(--text_color);
+  border-bottom: 2px solid var(--text_color);
+  transition: 0.1s;
+  border-bottom-left-radius: 8px;
+}
+
+.inputBoxxRight input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  /* color:  var(--text_color); */
+  font-size: 1em;
+  background: transparent;
+  border-right: 2px solid var(--text_color);
+  border-bottom: 2px solid var(--text_color);
+  transition: 0.1s;
+  border-bottom-right-radius: 8px;
+}
+
+.inputBoxx span {
+  margin-top: 5px;
+  position: absolute;
+  left: 0;
+  transform: translateX(113px) translateY(-25px);
+  margin-left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 12px;
+  /* background:  var(--text_color); */
+  /* color:  var(--text_color); */
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+  border-radius: 8px;
+}
+.inputBoxxRight span {
+  margin-top: 5px;
+  position: absolute;
+  left: 0;
+  transform: translateX(113px) translateY(-25px);
+  margin-left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 12px;
+  /* background:  var(--text_color); */
+  /* color:  var(--text_color); */
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+  border-radius: 8px;
+}
+
+.inputBoxx input:valid ~ span,
+.inputBoxx input:focus ~ span {
+  transform: translateX(113px) translateY(-15px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  /* background:  var(--text_color); */
+  color: #fff;
+  letter-spacing: 0.2em;
+  border: 2px;
+}
+
+.inputBoxx input:valid,
+.inputBoxx input:focus {
+  border: 2px solid var(--text_color);
+  border-radius: 8px;
+}
+.inputBoxxRight input:valid ~ span,
+.inputBoxxRight input:focus ~ span {
+  transform: translateX(113px) translateY(-15px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: var(--text_color);
+  /* color: #fff; */
+  letter-spacing: 0.2em;
+  border: 2px;
+}
+
+.inputBoxxRight input:valid,
+.inputBoxxRight input:focus {
+  border: 2px solid var(--text_color);
+  border-radius: 8px;
+}
+
+.enter {
+  height: 45px;
+  width: 25%;
+  border-radius: 5px;
+  border: 2px solid var(--text_color);
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.5s;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1em;
+}
+
+.enter:hover {
+  background-color: var(--button_color_hover);
+  color: white;
+}

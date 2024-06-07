@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosToken from "../../Hooks/useAxiosToken/useAxiosToken";
 import Widget from "../../Components/Card/Card2";
 import { useState } from "react";
+import Loader from "../../Components/Loader/Loader";
 
 const Appartment = () => {
   const axiosToken = useAxiosToken();
@@ -24,7 +25,11 @@ const Appartment = () => {
     (_, index) => index + 1
   );
 
-  const { data: appartments = [], refetch } = useQuery({
+  const {
+    data: appartments = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["appartment", itemsPerPage, currentPage],
     queryFn: async () => {
       const { data } = await axiosToken(
@@ -35,9 +40,11 @@ const Appartment = () => {
     },
   });
   // console.log(numberOfItemsForButton);
+  if (isLoading) return <Loader />;
   return (
     <div className="">
-      <div className="mt-[150px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-20 border-2 pt-9 mx-auto px-3 place-items-center lg:w-[95%]">
+      <h1 className="text-4xl underline font-bold text-center textColor">Browse Available Apartments</h1>
+      <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-20 border-2 pt-9 mx-auto px-3 place-items-center lg:w-[95%]">
         {appartments.map((item) => (
           <Widget key={item._id} item={item} refetch={refetch} />
         ))}

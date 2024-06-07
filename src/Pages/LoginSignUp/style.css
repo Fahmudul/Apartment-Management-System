@@ -26,7 +26,7 @@
   margin-right: 10px;
 }
 
-.containerr {
+.containerrr {
   position: relative;
   width: 70vw;
   height: 85vh;
@@ -35,7 +35,7 @@
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
-.containerr::before {
+.containerrr::before {
   content: "";
   position: absolute;
   top: 0;
@@ -195,7 +195,7 @@ a {
   transform: scale(1.1);
   transition: all 0.4s ease-in-out;
 }
-.panels-containerr {
+.panels-containerrr {
   position: absolute;
   top: 0;
   left: 0;
@@ -249,38 +249,38 @@ a {
   display: none;
 }
 /*Animation*/
-.containerr.sign-up-mode::before {
+.containerrr.sign-up-mode::before {
   transform: translateX(0);
 }
-.containerr.sign-up-mode .right-panel .image,
-.containerr.sign-up-mode .right-panel .content {
+.containerrr.sign-up-mode .right-panel .image,
+.containerrr.sign-up-mode .right-panel .content {
   transform: translateX(200%);
 }
-.containerr.sign-up-mode .left-panel .image,
-.containerr.sign-up-mode .left-panel .content {
+.containerrr.sign-up-mode .left-panel .image,
+.containerrr.sign-up-mode .left-panel .content {
   transform: translateX(0);
 }
-.containerr.sign-up-mode form.sign-in-form {
+.containerrr.sign-up-mode form.sign-in-form {
   opacity: 0;
 }
-.containerr.sign-up-mode form.sign-up-form {
+.containerrr.sign-up-mode form.sign-up-form {
   opacity: 1;
 }
-.containerr.sign-up-mode .right-panel {
+.containerrr.sign-up-mode .right-panel {
   pointer-events: none;
 }
-.containerr.sign-up-mode .left-panel {
+.containerrr.sign-up-mode .left-panel {
   pointer-events: all;
 }
 /*Responsive*/
 @media (max-width: 779px) {
-  .containerr {
+  .containerrr {
     width: 100vw;
     height: 100vh;
   }
 }
 @media (max-width: 635px) {
-  .containerr::before {
+  .containerrr::before {
     display: none;
   }
   .form {
@@ -289,14 +289,14 @@ a {
   .form.sign-up-form {
     display: none;
   }
-  .containerr.sign-up-mode2 form.sign-up-form {
+  .containerrr.sign-up-mode2 form.sign-up-form {
     display: flex;
     opacity: 1;
   }
-  .containerr.sign-up-mode2 form.sign-in-form {
+  .containerrr.sign-up-mode2 form.sign-in-form {
     display: none;
   }
-  .panels-containerr {
+  .panels-containerrr {
     display: none;
   }
   .account-text {

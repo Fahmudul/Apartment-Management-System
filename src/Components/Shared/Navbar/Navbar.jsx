@@ -27,7 +27,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="w-[90%]  mx-auto mb-10 pt-3">
+    <div className="w-[90%]  mx-auto mb-10 pt-3 relative z-10">
       <nav className="navbar">
         <input type="checkbox" id="check" />
         <label htmlFor="check" className="menu">
