@@ -4,20 +4,20 @@ import useAuthInfo from "../../Hooks/useAuthInfo/useAuthInfo";
 const RequestCard = () => {
   const { user } = useAuthInfo();
   return (
-    <div className="w-[60%] mx-auto mt-5 outline h-[140px] p-3 flex justify-between">
+    <div className="xsm:w-[90%] lg:w-[60%] xsm:flex-col lg:flex-row mx-auto mt-5 outline xsm:p-1 lg:p-3 flex justify-between">
       <div
-        className="flex w-[50%] px-3"
+        className="flex xsm:w-[100%] lg:w-[50%] xsm:flex-col lg:flex-row"
         // style={{ border: "1px solid red" }}
       >
         <img
           src={user?.photoURL}
-          className="min-w-[110px] min-h-[110px] w-[10%] image-border mr-4 "
+          className="xsm:min-w-[40px] xsm:min-h-[60px] lg:min-w-[160px]  w-[10%] image-border mr-4 xsm:mx-auto lg:mx-0"
           alt=""
         />
 
-        <div className="flex flex-col justify-center">
-          <div  >
-            <div className="space-y-1">
+        <div className="flex flex-col justify-center xsm:items-center lg:items-start xsm:text-center lg:text-left xsm:my-2 lg:ml-2">
+          <div>
+            <div className="xsm:space-y-2 space-y-1">
               <h1>Henry barbara</h1>
               <h1>Email: nVHbJ@example.com</h1>
               <div className="flex gap-3">
@@ -40,16 +40,17 @@ const RequestCard = () => {
                   1022
                 </span>
               </div>
-              <div></div>
             </div>
           </div>
-          <div>
+          <div className="xsm:mt-2">
             <span>Requested at 10:00 AM</span>
-            <span className="ml-2 px-3 py-2 shadow-lg rounded-3xl ">$1011.00</span>
+            <span className="ml-2 px-3 py-2 shadow-lg rounded-3xl ">
+              $1011.00
+            </span>
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-x-5 pr-3">
+      <div className="flex items-center xsm:justify-center gap-x-5 pr-3">
         <button className="active:scale-75 transition-all duration-300">
           <TiTick className="w-10 h-10 fill-green-500" />
         </button>

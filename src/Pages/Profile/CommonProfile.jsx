@@ -36,7 +36,7 @@ const CommonProfile = () => {
             </div>
           </div>
           {/*Social links */}
-          <div className="flex gap-x-3 justify-center custom-shadow mt-6  py-3 animation-scale w-[55%] mx-auto">
+          <div className="flex gap-x-3 justify-center custom-shadow mt-6  py-3 animation-scale w-[55%] min-w-[250px] mx-auto">
             <Link
               to=""
               className=" bg-white p-2 rounded-full hover:scale-105 transition-all duration-300 hover:shadow-xl"
@@ -63,7 +63,7 @@ const CommonProfile = () => {
             </Link>
           </div>
         </div>
-        <div className="flex-1 flex justify-center items-center shadow-2xl rounded-3xl">
+        <div className="flex-1 flex justify-center items-center shadow-2xl rounded-3xl ml-5">
           <div className="w-[90%] h-[80%]">
             <div className="flex justify-between">
               <h1 className="text-3xl font-bold">

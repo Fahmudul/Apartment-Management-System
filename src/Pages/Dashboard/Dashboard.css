@@ -1,6 +1,6 @@
 .page.sidebar-2-page {
   background: var(--side_bar_background);
-  height: 100vh;
+  height: 100%;
 }
 
 .sidebar-2 {
@@ -12,6 +12,8 @@
   height: 100%;
   background: var(--side_bar_background);
   transition: width 0.4s;
+  height: 100%;
+
 }
 
 .sidebar-2.open {

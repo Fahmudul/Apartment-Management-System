@@ -2,11 +2,22 @@ import { SlCalender } from "react-icons/sl";
 import "../MakeAnnouncement/Announcements.css";
 import { IoSearch } from "react-icons/io5";
 import ButtonPro from "../ButtonPro/ButtonPro";
+import { BiSolidCoupon } from "react-icons/bi";
+import { RxCross2 } from "react-icons/rx";
 import "../ManageMembers/Member.css";
 import "./Coupon.css";
+import { useState } from "react";
 const Coupon = () => {
+  const [showModal, setShowModal] = useState(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
   return (
-    <div className="lg:w-[90%] p-2 mx-auto mt-5 overflow-x-auto">
+    <div className="lg:w-[90%] p-2 mx-auto mt-5  relative">
       <div className="flex justify-between mb-5 items-center">
         <h1 className="text-3xl font-semibold italic ">Coupons</h1>
         <div className="flex items-center gap-x-2">
@@ -19,7 +30,7 @@ const Coupon = () => {
             />
             <IoSearch className="absolute right-3 button-hover" />
           </div>
-          <ButtonPro />
+          <ButtonPro handleShowModal={handleShowModal} />
         </div>
       </div>
       <div className="overflow-x-auto ">
@@ -50,66 +61,71 @@ const Coupon = () => {
           </tbody>
         </table>
       </div>
-      <div
-        className="coupon-container  flex justify-center"
-        style={{ border: "1px solid red" }}
-      >
-        <div className="popup ">
-          <form className="form">
-            <div className="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 34 34"
-                height={34}
-                width={34}
-              >
-                <path
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  stroke="#115DFC"
-                  d="M7.08385 9.91666L5.3572 11.0677C4.11945 11.8929 3.50056 12.3055 3.16517 12.9347C2.82977 13.564 2.83226 14.3035 2.83722 15.7825C2.84322 17.5631 2.85976 19.3774 2.90559 21.2133C3.01431 25.569 3.06868 27.7468 4.67008 29.3482C6.27148 30.9498 8.47873 31.0049 12.8932 31.1152C15.6396 31.1838 18.3616 31.1838 21.1078 31.1152C25.5224 31.0049 27.7296 30.9498 29.331 29.3482C30.9324 27.7468 30.9868 25.569 31.0954 21.2133C31.1413 19.3774 31.1578 17.5631 31.1639 15.7825C31.1688 14.3035 31.1712 13.564 30.8359 12.9347C30.5004 12.3055 29.8816 11.8929 28.6437 11.0677L26.9171 9.91666"
+      {/* Coupon popup */}
+      {showModal && (
+        <div
+          className="coupon-container  flex justify-center lg:w-[calc(100vw-250px)]  absolute top-0 left-0 backdrop-blur-2xl"
+          // style={{ border: "1px solid red" }}
+        >
+          <div
+            className={`w-[320px] relative ${
+              showModal ? "slideDown" : "slideUp"
+            }`}
+            style={{ animationDuration: "0.3s" }}
+          >
+            <button
+              className="absolute top-6 right-5 cursor-pointer z-20"
+              onClick={handleCloseModal}
+            >
+              <RxCross2 className=" textColor w-6 h-6 active:scale-95 transition-all duration-300  cursor-pointer" />
+            </button>
+            <div className="popup">
+              <form className="form relative">
+                <p className="text-center w-full textColor font-semibold text-xl">
+                  Create Coupon
+                </p>
+                <div className="flex w-full justify-center">
+                  <BiSolidCoupon className="text-7xl textColor text-center " />
+                </div>
+                <div className="note">
+                  <label className="titlee">Subscribe for updates</label>
+                  <span className="subtitlee">
+                    Subscribe to this weekly news letter so you don’t miss out
+                    on the new hot tech topics.
+                  </span>
+                </div>
+                <div className="w-full coupon-field">
+                  <input
+                    placeholder="Coupon code"
+                    title="Enter coupon"
+                    name="coupon-code"
+                    type="text"
+                    className="input_field"
+                  />
+                  <input
+                    placeholder="Discount"
+                    title="Enter your e-mail"
+                    name="discount"
+                    type="number"
+                    className="input_field"
+                  />
+                  <input
+                    placeholder="Description"
+                    title="Description"
+                    name="description"
+                    type="text"
+                    className="input_field"
+                  />
+                </div>
+                <input
+                  className=" w-full text-center py-2 rounded-lg outline-none cursor-pointer active:scale-95 transition-all duration-300 btnColor"
+                  defaultValue="Add Coupon"
                 />
-                <path
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  stroke="#115DFC"
-                  d="M2.83331 14.1667L12.6268 20.0427C14.7574 21.3211 15.8227 21.9603 17 21.9603C18.1772 21.9603 19.2426 21.3211 21.3732 20.0427L31.1666 14.1667"
-                />
-                <path
-                  strokeWidth="2.5"
-                  stroke="#115DFC"
-                  d="M7.08331 17V8.50001C7.08331 5.82872 7.08331 4.49307 7.91318 3.66321C8.74304 2.83334 10.0787 2.83334 12.75 2.83334H21.25C23.9212 2.83334 25.2569 2.83334 26.0868 3.66321C26.9166 4.49307 26.9166 5.82872 26.9166 8.50001V17"
-                />
-                <path
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2.5"
-                  stroke="#115DFC"
-                  d="M14.1667 14.1667H19.8334M14.1667 8.5H19.8334"
-                />
-              </svg>
+              </form>
             </div>
-            <div className="note">
-              <label className="titlee">Subscribe for updates</label>
-              <span className="subtitlee">
-                Subscribe to this weekly news letter so you don’t miss out on
-                the new hot tech topics.
-              </span>
-            </div>
-            <div className="w-full coupon-field">
-              <input
-                placeholder="Enter your e-mail"
-                title="Enter your e-mail"
-                name="email"
-                type="email"
-                className="input_field"
-              />
-            </div>
-            <button className="submit">Submit</button>
-          </form>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
