@@ -47,9 +47,11 @@ export default function Widget({ item, refetch }) {
       description,
       customerName: user?.displayName,
       customerEmail: user?.email,
+      customerPhoto: user?.photoURL,
       status: "pending",
+      agreemtentDate: String(new Date()),
     };
-
+    console.table(agreementDetails);
     await mutateAsync(agreementDetails);
   };
   return (

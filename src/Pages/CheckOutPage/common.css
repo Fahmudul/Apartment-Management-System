@@ -1,0 +1,10 @@
+.StripeElement {
+  width: 95%;
+  padding: 10px 0;
+  display: inline;
+  border-bottom: 1px dotted var(--text_color);
+}
+
+.StripeElement .InputElement::placeholder {
+  color: var(--text_color);
+}

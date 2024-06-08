@@ -1,9 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import "./CheckOutPage.css";
+import CheckoutForm from "./CheckoutForm";
+import useAxiosToken from "../../Hooks/useAxiosToken/useAxiosToken";
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
+
 const CheckOutPage = () => {
   useEffect(() => {
     const currentTheme = localStorage.getItem("selectedTheme");
-    console.log(currentTheme);
+    // console.log(currentTheme);
     document.querySelector("body").setAttribute("data-theme", currentTheme);
   });
   return (
@@ -21,7 +27,7 @@ const CheckOutPage = () => {
         >
           <div className="cards couponss  p-5 ">
             <label className="title">Apply coupons</label>
-            <form className="form" >
+            <form className="form">
               <input
                 type="text"
                 placeholder="Apply your couponss here"
@@ -31,23 +37,13 @@ const CheckOutPage = () => {
             </form>
           </div>
 
-          <div className="cards checkout p-5">
-            <label className="title">Checkout</label>
-            <div className="details">
-              <span>Your carts subtotal:</span>
-              <span>47.99$</span>
-              <span>Discount through applied couponss:</span>
-              <span>3.99$</span>
-              <span>Shipping fees:</span>
-              <span>4.99$</span>
-            </div>
-            <div className="checkout--footer">
-              <label className="prices">
-                <sup>$</sup>57.99
-              </label>
-              <button className="checkout-btn">Checkout</button>
-            </div>
-          </div>
+          {/* Payment Card form */}
+
+          <Elements stripe={stripePromise}>
+            <CheckoutForm />
+          </Elements>
+
+        
         </div>
       </div>
     </div>

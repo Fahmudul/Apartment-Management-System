@@ -1,6 +1,7 @@
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 import "./Member.css";
 const ManageMembers = () => {
+
   return (
     <div className="w-[90%] mx-auto mt-5 ">
       <h1 className="text-3xl font-semibold italic mb-5">

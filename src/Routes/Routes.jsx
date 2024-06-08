@@ -52,7 +52,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "profile",
-        element: <CommonProfile />,
+        element: (
+          <PrivateRoutes>
+            <CommonProfile />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "profileM",

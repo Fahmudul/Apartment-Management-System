@@ -59,7 +59,7 @@ const Dashboard = () => {
                     <p>Home</p>
                   </NavLink>
                   <button className="absolute bottom-2" id="logoutBtn">
-                    <span className="material-symbols-outlined">
+                    <span className="">
                       <RxExit className="w-6 h-6" />
                     </span>
                     <p>Logout</p>

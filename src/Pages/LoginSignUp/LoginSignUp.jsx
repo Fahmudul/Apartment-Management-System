@@ -5,8 +5,10 @@ import useAuthInfo from "../../Hooks/useAuthInfo/useAuthInfo";
 import getImageUrl from "../../Utils/GetImageUrl/GetImageUrl";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosBase from "../../Hooks/useAxiosBase/useAxiosBase";
 const LoginSignUp = () => {
   const location = useLocation();
+  const axiosBase = useAxiosBase();
   const from = location.state?.from?.pathname || "/";
   // console.log(from);
   useEffect(() => {
@@ -47,7 +49,15 @@ const LoginSignUp = () => {
     CreateUser(email, password)
       .then((result) => {
         UpdateUserProfile(userName, photoUrl)
-          .then((res) => {
+          .then(async (res) => {
+            const userDetails = {
+              name: userName,
+              photo: photoUrl,
+              email: email,
+              role: "user",
+            };
+            const registeredUser = await axiosBase.post("/users", userDetails);
+            console.log(registeredUser);
             toast.success("User Created Successfully!");
             setTimeout(() => {
               SignOut()
