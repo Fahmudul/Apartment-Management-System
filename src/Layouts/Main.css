@@ -25,7 +25,9 @@
 .textColor1 {
   color: var(--body_color);
 }
-
+.statisticColor {
+  color: var(--card_color);
+}
 .outlinedColor {
   outline: 2px solid var(--text_color);
 }

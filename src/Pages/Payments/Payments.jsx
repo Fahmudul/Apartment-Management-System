@@ -13,14 +13,57 @@ const Payments = () => {
     enabled: !!user,
     queryFn: async () => {
       const { data } = await axiosToken(`/agreements/?email=${user?.email}`);
-      // console.log(data);
+      console.log(data);
       return data;
     },
   });
+  function getMonthName(dateString) {
+    // Use Date.parse() to convert the string to a timestamp (milliseconds since epoch)
+    const timestamp = Date.parse(dateString);
+
+    // If parsing is successful (returns a number, not NaN)
+    if (!isNaN(timestamp)) {
+      // Create a new Date object from the timestamp
+      const dateObject = new Date(timestamp);
+
+      // Get the month index (0-indexed) and convert it to month name
+      const monthIndex = dateObject.getMonth();
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const monthName = monthNames[monthIndex];
+
+      return monthName;
+    } else {
+      // Handle parsing error (invalid date string)
+      return "Invalid date string format.";
+    }
+  }
 
   // console.log(agreementInfo);
   // const { block_name, floor_no } = data;
   // console.log(block_name, floor_no);
+  if (!data) {
+    return (
+      <div
+        className=" h-screen flex justify-center items-center"
+        style={{ border: "1px solid" }}
+      >
+        <h1 className="text-3xl font-semibold italic mb-5">You have cleared all payments 😊</h1>
+      </div>
+    );
+  }
   return (
     <div>
       <div className="containerr h-screen">
@@ -59,7 +102,7 @@ const Payments = () => {
                 <input
                   type="email"
                   disabled
-                  defaultValue={data?.customerEmail}
+                  defaultValue={getMonthName(data?.agreemtentDate)}
                   className="cursor-not-allowed"
                 />
               </div>
@@ -67,7 +110,7 @@ const Payments = () => {
                 <input
                   type="email"
                   disabled
-                  defaultValue={data?.customerEmail}
+                  defaultValue={data?.apartment_no}
                   className="cursor-not-allowed"
                 />
               </div>
@@ -81,7 +124,10 @@ const Payments = () => {
               </div>
             </div>
           </div>
-          <Link to='/checkout' className="enter text-base flex justify-center items-center">
+          <Link
+            to="/checkout"
+            className="enter text-base flex justify-center items-center"
+          >
             Pay Now
           </Link>
         </div>

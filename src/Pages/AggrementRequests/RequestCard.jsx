@@ -14,6 +14,8 @@ const RequestCard = ({ request, refetch }) => {
     floor_no,
     apartment_no,
     block_name,
+    ready,
+    roomId,
   } = request;
   function getDateTimeFromString(dateString) {
     // Use Date.parse() to convert the string to a timestamp (milliseconds since epoch)
@@ -54,9 +56,10 @@ const RequestCard = ({ request, refetch }) => {
         `/agreements/?email=${customerEmail}`,
         {
           action,
+          roomId,
         }
       );
-      
+
       return data;
     },
     onSuccess: (data) => {

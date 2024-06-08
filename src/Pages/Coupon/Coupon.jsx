@@ -7,14 +7,88 @@ import { RxCross2 } from "react-icons/rx";
 import "../../Pages/ManageMembers/Member.css";
 import "./Coupon.css";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import useAxiosToken from "../../Hooks/useAxiosToken/useAxiosToken";
+import { toast } from "react-toastify";
 const Coupon = () => {
+  const axiosToken = useAxiosToken();
   const [showModal, setShowModal] = useState(false);
+  const [startDate, setStartDate] = useState(new Date().toLocaleDateString());
+  const [couponStartDate, setCouponStartDate] = useState(
+    new Date().toLocaleDateString()
+  );
+
+  //Get all coupon
+  const { data: couponData = [], refetch } = useQuery({
+    queryKey: ["coupon"],
+    queryFn: async () => {
+      const { data } = await axiosToken.get("/coupon");
+      // console.log(data);
+      return data;
+    },
+  });
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
+  // console.log(startDate);
   const handleShowModal = () => {
     setShowModal(true);
+  };
+
+  const { mutateAsync } = useMutation({
+    mutationFn: async (couponData) => {
+      const { data } = await axiosToken.post("/coupon", couponData);
+      console.log(data);
+      return data;
+    },
+    onSuccess: (data) => {
+      if (data["insertedId"]) {
+        toast.success("Coupon Created Successfully");
+        handleCloseModal();
+        refetch();
+      }
+    },
+  });
+
+  //Change Coupon expiration date
+
+  const { mutateAsync: newMutateAsync } = useMutation({
+    mutationFn: async (expitationTime) => {
+      const { data } = await axiosToken.patch("/coupon", expitationTime);
+      console.log(data);
+      return data;
+    },
+    onSuccess: (data) => {
+      if (data["modifiedCount"] > 0) {
+        toast.success("Expiration Date Changed Successfully");
+        refetch();
+      }
+    },
+  });
+  const changeCouponStartDate = async (e, couponId) => {
+    const newExpriationDate = e.target.value;
+    console.log(couponId);
+    await newMutateAsync({ newExpriationDate, couponId });
+  };
+  // console.log(couponStartDate);
+
+  const handleCreateCoupon = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const couponCode = form.couponCode.value;
+    const discount = form.discount.value;
+    const description = form.description.value;
+    const expriation = form.expriationDate.value;
+    const couponData = {
+      couponCode,
+      discount,
+      description,
+      expriation,
+    };
+    // console.table(couponData);
+    await mutateAsync(couponData);
   };
   return (
     <div className="lg:w-[90%] p-2 mx-auto mt-5  relative">
@@ -47,17 +121,23 @@ const Coupon = () => {
           </thead>
           <tbody className="text-lg">
             {/* row 1 */}
-            <tr>
-              <td>COZY34</td>
-              <td>34%</td>
-              <td>Get a 34% discount</td>
-              <td>2024/01/21</td>
-              <td>
-                <button>
-                  <SlCalender className="text-2xl hover:fill-blue-400 active:scale-95 transition-all duration-300" />
-                </button>
-              </td>
-            </tr>
+            {couponData.map((coupon) => (
+              <tr key={coupon._id} className="">
+                <td>{coupon.couponCode}</td>
+                <td>{coupon.discount}%</td>
+                <td>{coupon.description}</td>
+                <td>{coupon.expriation}</td>
+                <td className="">
+                  <input
+                    type="date"
+                    name="date"
+                    id=""
+                    className="bg-transparent"
+                    onChange={(e) => changeCouponStartDate(e, coupon._id)}
+                  />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -80,7 +160,7 @@ const Coupon = () => {
               <RxCross2 className=" textColor w-6 h-6 active:scale-95 transition-all duration-300  cursor-pointer" />
             </button>
             <div className="popup">
-              <form className="formm relative">
+              <form className="formm relative" onSubmit={handleCreateCoupon}>
                 <p className="text-center w-full textColor font-semibold text-xl">
                   Create Coupon
                 </p>
@@ -88,19 +168,19 @@ const Coupon = () => {
                   <BiSolidCoupon className="text-7xl textColor text-center " />
                 </div>
                 <div className="note">
-                  <label className="titlee">Subscribe for updates</label>
+                  <label className="text-2xl text-center">Create Coupon</label>
                   <span className="subtitlee">
-                    Subscribe to this weekly news letter so you don’t miss out
-                    on the new hot tech topics.
+                    Create coupon for user to get discount
                   </span>
                 </div>
                 <div className="w-full coupon-field">
                   <input
                     placeholder="Coupon code"
                     title="Enter coupon"
-                    name="coupon-code"
+                    name="couponCode"
                     type="text"
                     className="input_field"
+                    required
                   />
                   <input
                     placeholder="Discount"
@@ -108,6 +188,7 @@ const Coupon = () => {
                     name="discount"
                     type="number"
                     className="input_field"
+                    required
                   />
                   <input
                     placeholder="Description"
@@ -115,11 +196,22 @@ const Coupon = () => {
                     name="description"
                     type="text"
                     className="input_field"
+                    required
+                  />
+                  <input
+                    placeholder="Description"
+                    title="date"
+                    name="expriationDate"
+                    type="date"
+                    className="textColor"
+                    required
+                    onChange={(e) => setCouponStartDate(e.target.value)}
                   />
                 </div>
                 <input
                   className=" w-full text-center py-2 rounded-lg outline-none cursor-pointer active:scale-95 transition-all duration-300 btnColor"
                   defaultValue="Add Coupon"
+                  type="submit"
                 />
               </form>
             </div>

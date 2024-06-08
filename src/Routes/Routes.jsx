@@ -17,6 +17,7 @@ import MakeAnnouncement from "../Pages/MakeAnnouncement/MakeAnnouncement";
 import MemberRoutes from "./MemberRoutes";
 import Payments from "../Pages/Payments/Payments";
 import CheckOutPage from "../Pages/CheckOutPage/CheckOutPage";
+import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -76,7 +77,11 @@ const router = createBrowserRouter([
       },
       {
         path: "paymentHistory",
-        element: <div>History</div>,
+        element: (
+          <MemberRoutes>
+            <PaymentHistory />
+          </MemberRoutes>
+        ),
       },
 
       {
@@ -101,7 +106,11 @@ const router = createBrowserRouter([
       },
       {
         path: "members",
-        element: <ManageMembers />,
+        element: (
+          <AdminRoutes>
+            <ManageMembers />
+          </AdminRoutes>
+        ),
       },
 
       {
@@ -120,7 +129,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/checkout",
-    element: <CheckOutPage />,
+    element: (
+      <MemberRoutes>
+        <CheckOutPage />
+      </MemberRoutes>
+    ),
   },
 ]);
 export default router;

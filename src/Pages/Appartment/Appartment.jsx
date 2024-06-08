@@ -12,7 +12,7 @@ const Appartment = () => {
     queryKey: ["roomscount"],
     queryFn: async () => {
       const { data } = await axiosToken("/allAppartments");
-      console.log(data.count);
+      // console.log(data.count);
       return data.count;
     },
   });

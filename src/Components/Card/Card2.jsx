@@ -10,7 +10,17 @@ import { toast } from "react-toastify";
 export default function Widget({ item, refetch }) {
   const { user } = useAuthInfo();
   const axiosToken = useAxiosToken();
-  const { floor_no, block_name, apartment_no, rent, description, id } = item;
+  const {
+    floor_no,
+    block_name,
+    apartment_no,
+    rent,
+    description,
+    id,
+    _id,
+    ready,
+  } = item;
+  // console.log(ready);
   const [theme, setTheme] = useState("");
   useEffect(() => {
     const selectedTheme = localStorage.getItem("selectedTheme");
@@ -24,7 +34,7 @@ export default function Widget({ item, refetch }) {
         `/agreements/?email=${user?.email}`,
         agreementDetails
       );
-      console.log(data["insertedId"]);
+      // console.log(data["insertedId"]);
       return data;
     },
     onSuccess: (data) => {
@@ -37,9 +47,11 @@ export default function Widget({ item, refetch }) {
       toast.error(error?.response?.data?.message);
     },
   });
-  const handleAgreement = async () => {
+  const handleAgreement = async (_id) => {
+    // console.log("room id", _id);
     const agreementDetails = {
       id: id,
+      roomId: _id,
       block_name,
       floor_no,
       apartment_no,
@@ -50,6 +62,7 @@ export default function Widget({ item, refetch }) {
       customerPhoto: user?.photoURL,
       status: "pending",
       agreemtentDate: String(new Date()),
+      ready,
     };
     console.table(agreementDetails);
     await mutateAsync(agreementDetails);
@@ -71,12 +84,14 @@ export default function Widget({ item, refetch }) {
       <div className="p-6 text-center absolute bottom-0">
         <h2 className="text-xl font-semibold text-center">{`"${block_name}"`}</h2>
         <p className="text-zinc-400">{`Floor - ${floor_no} | Appartment - ${apartment_no}`}</p>
-        <p className="mt-4 mb-4 text-zinc-500 w-[336px] h-[72px]">
-          {description}
-        </p>
+        <p className="mt-2  text-zinc-500 w-[336px] h-[72px]">{description}</p>
+        <p className="mb-2">{ready}</p>
         <button
-          onClick={handleAgreement}
-          className={`button-banner lg:px-5 lg:py-4 py-3 px-3 rounded-xl font-bold mr-2 active:scale-90  ${
+          disabled={ready === "Ready For You!" ? false : true}
+          onClick={() => handleAgreement(_id)}
+          className={`button-banner lg:px-5 lg:py-4 py-3 px-3 rounded-xl font-bold mr-2 active:scale-90 ${
+            ready === "Ready For You!" ? "cursor-pointer" : "cursor-not-allowed"
+          }  ${
             theme === "light"
               ? "hover:outline outline-[#d19b59] text-[#ECE3CA]  hover:transition-all hover:duration-500 bg-[#b18045] hover:bg-transparent hover:text-[#b18045]"
               : "hover:outline outline-[#6a58dd] text-[#352f91] hover:transition-all hover:duration-500 bg-[#6a58dd] hover:bg-transparent hover:text-[#6a58dd]"
