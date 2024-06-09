@@ -93,7 +93,9 @@ const Coupon = () => {
   return (
     <div className="lg:w-[90%] p-2 mx-auto mt-5  relative">
       <div className="flex justify-between mb-5 items-center">
-        <h1 className="text-3xl font-semibold italic ">Coupons</h1>
+        <h1 className="text-3xl font-semibold italic ">
+          Coupons {couponData.length}
+        </h1>
         <div className="flex items-center gap-x-2">
           <div className="coupon-field flex items-center relative ">
             <input

@@ -4,7 +4,7 @@ Cozy Nest is a comprehensive apartment management system designed to facilitate 
 
 ## Live Site URL
 
-[Visit Cozy Nest](http://your-live-site-url.com)
+[Visit Cozy Nest](https://cozynest-cbb8e.web.app)
 
 ## Admin Credentials
 

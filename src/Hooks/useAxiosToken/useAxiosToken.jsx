@@ -1,7 +1,7 @@
 import axios from "axios";
 import useAuthInfo from "../useAuthInfo/useAuthInfo";
 const axiosToken = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://cozyserver.vercel.app",
 });
 
 const useAxiosToken = () => {

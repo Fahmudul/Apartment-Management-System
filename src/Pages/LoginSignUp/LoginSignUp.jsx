@@ -9,6 +9,7 @@ import useAxiosBase from "../../Hooks/useAxiosBase/useAxiosBase";
 const LoginSignUp = () => {
   const location = useLocation();
   const axiosBase = useAxiosBase();
+  const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
   //
   useEffect(() => {
@@ -18,7 +19,7 @@ const LoginSignUp = () => {
   });
   const { CreateUser, SignIn, SignInWithGoogle, UpdateUserProfile, SignOut } =
     useAuthInfo();
-  const navigate = useNavigate();
+
   const handleSignIn = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -59,8 +60,8 @@ const LoginSignUp = () => {
               email: email,
               role: "user",
             };
-            // const registeredUser = await axiosBase.post("/users", userDetails);
-            //
+            const registeredUser = await axiosBase.post("/users", userDetails);
+
             toast.success("User Created Successfully!");
             setTimeout(() => {
               SignOut()
@@ -68,6 +69,7 @@ const LoginSignUp = () => {
                 .catch((error) => {
                   console.error(error);
                 });
+              navigate("/login");
               window.location.reload();
             }, 1500);
           })

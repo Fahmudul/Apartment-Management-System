@@ -17,6 +17,7 @@ const Dashboard = () => {
     SignOut();
   };
   const { data } = useAdmin();
+
   useEffect(() => {
     const currentTheme = localStorage.getItem("selectedTheme");
     //
