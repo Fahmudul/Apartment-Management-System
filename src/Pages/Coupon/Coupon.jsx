@@ -25,14 +25,14 @@ const Coupon = () => {
     queryKey: ["coupon"],
     queryFn: async () => {
       const { data } = await axiosToken.get("/coupon");
-      // console.log(data);
+      //
       return data;
     },
   });
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  // console.log(startDate);
+  //
   const handleShowModal = () => {
     setShowModal(true);
   };
@@ -40,7 +40,7 @@ const Coupon = () => {
   const { mutateAsync } = useMutation({
     mutationFn: async (couponData) => {
       const { data } = await axiosToken.post("/coupon", couponData);
-      console.log(data);
+
       return data;
     },
     onSuccess: (data) => {
@@ -57,7 +57,7 @@ const Coupon = () => {
   const { mutateAsync: newMutateAsync } = useMutation({
     mutationFn: async (expitationTime) => {
       const { data } = await axiosToken.patch("/coupon", expitationTime);
-      console.log(data);
+
       return data;
     },
     onSuccess: (data) => {
@@ -69,10 +69,10 @@ const Coupon = () => {
   });
   const changeCouponStartDate = async (e, couponId) => {
     const newExpriationDate = e.target.value;
-    console.log(couponId);
+
     await newMutateAsync({ newExpriationDate, couponId });
   };
-  // console.log(couponStartDate);
+  //
 
   const handleCreateCoupon = async (e) => {
     e.preventDefault();

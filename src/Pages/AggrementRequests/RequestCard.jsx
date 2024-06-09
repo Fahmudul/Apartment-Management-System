@@ -42,7 +42,7 @@ const RequestCard = ({ request, refetch }) => {
     }
   }
   const newDate = getDateTimeFromString(agreemtentDate);
-  console.log(newDate);
+
   const { user } = useAuthInfo();
   const axiosToken = useAxiosToken();
   // Todo : 1. by clicking accept status will be changed into chekced and the user's role will be changed to member
@@ -71,11 +71,11 @@ const RequestCard = ({ request, refetch }) => {
   });
   const handleAcceptAgreement = async () => {
     await mutateAsync("accepted");
-    // console.log("clicked");
+    //
   };
   const handleDeclineAgreement = async () => {
     await mutateAsync("declined");
-    // console.log("clicked");
+    //
   };
   return (
     <div className="xsm:w-[90%] lg:w-[60%] xsm:flex-col lg:flex-row mx-auto mt-5 shadow-2xl rounded-2xl hover:scale-[1.01] transition-all duration-300 xsm:p-1  lg:p-4 flex justify-between">

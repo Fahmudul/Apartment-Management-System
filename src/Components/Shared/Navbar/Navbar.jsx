@@ -8,8 +8,11 @@ import { useState } from "react";
 import Dropdown from "../../Dropdown/Dropdown";
 import Loader from "../../Loader/Loader";
 import LoaderNavbar from "../../LoaderNavbar/LoaderNavbar";
+import useAdmin from "../../../Hooks/useAdmin/useAdmin";
 const Navbar = () => {
   const [dropDown, setDropDown] = useState(false);
+  const { data } = useAdmin();
+
   const handlePress = () => {
     setDropDown(!dropDown);
   };
@@ -53,7 +56,7 @@ const Navbar = () => {
         <div className="nav-items flex">
           <div className="profile-img textColor text-center min-h-[120px] ">
             <img
-              className="w-20 rounded-full mb-2"
+              className="w-20 rounded-full mb-2 mx-auto"
               src={user?.photoURL}
               alt=""
             />

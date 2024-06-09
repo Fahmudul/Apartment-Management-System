@@ -10,10 +10,10 @@ const LoginSignUp = () => {
   const location = useLocation();
   const axiosBase = useAxiosBase();
   const from = location.state?.from?.pathname || "/";
-  // console.log(from);
+  //
   useEffect(() => {
     const currentTheme = localStorage.getItem("selectedTheme");
-    // console.log(currentTheme)
+    //
     document.querySelector("body").setAttribute("data-theme", currentTheme);
   });
   const { CreateUser, SignIn, SignInWithGoogle, UpdateUserProfile, SignOut } =
@@ -23,18 +23,21 @@ const LoginSignUp = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+
     SignIn(email, password)
       .then((result) => {
         const user = result.user;
-        // console.log(user);
+        //
         toast.success("Logged In Successfully!");
         setTimeout(() => {
           navigate(from, { replace: true });
         }, 1000);
       })
       .catch((error) => {
-        console.log(error);
+        //
+        if (error.code === "auth/invalid-credential") {
+          toast.error("No User Found!");
+        }
       });
   };
   // Sign Up
@@ -56,24 +59,24 @@ const LoginSignUp = () => {
               email: email,
               role: "user",
             };
-            const registeredUser = await axiosBase.post("/users", userDetails);
-            console.log(registeredUser);
+            // const registeredUser = await axiosBase.post("/users", userDetails);
+            //
             toast.success("User Created Successfully!");
             setTimeout(() => {
               SignOut()
                 .then(() => {})
                 .catch((error) => {
-                  console.log(error);
+                  console.error(error);
                 });
               window.location.reload();
             }, 1500);
           })
           .catch((error) => {
-            console.log(error);
+            console.error(error);
           });
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -82,7 +85,7 @@ const LoginSignUp = () => {
     SignInWithGoogle()
       .then((result) => {
         // const user = result.user;
-        // console.log(user);
+        //
         toast.success("Logged In Successfully!", {
           position: "top-center",
         });
@@ -90,9 +93,7 @@ const LoginSignUp = () => {
           navigate("/");
         }, 1000);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   };
   useEffect(() => {
     const sign_in_btn = document.querySelector("#sign-in-btn");

@@ -3,7 +3,7 @@ import useAxiosToken from "../useAxiosToken/useAxiosToken";
 
 const useMember = () => {
   const axiosToken = useAxiosToken();
-  const { data: members, refetch } = useQuery({
+  const { data: members = [], refetch } = useQuery({
     queryKey: ["member"],
     queryFn: async () => {
       const { data } = await axiosToken("/users");

@@ -6,10 +6,9 @@ const axiosToken = axios.create({
 
 const useAxiosToken = () => {
   const { SignOut } = useAuthInfo();
-  // console.log(SignOut);
+  //
   axiosToken.interceptors.request.use(
     (config) => {
-      console.log("interceptor called from request");
       const token = localStorage.getItem("access-token");
       if (token) {
         config.headers["Authorization"] = `Bearer ${token}`;

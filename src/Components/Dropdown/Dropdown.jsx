@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const Dropdown = () => {
   const { user, SignOut } = useAuthInfo();
   const { data } = useAdmin();
-  console.log(data?.role);
   const handleSignout = () => {
     SignOut()
       .then(() => {})

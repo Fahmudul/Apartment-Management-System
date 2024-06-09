@@ -22,18 +22,16 @@ const CheckOutPage = () => {
 
     queryFn: async () => {
       const { data } = await axiosToken(`/agreements/?email=${user?.email}`);
-      console.log(data.rent);
       setWithDiscount(data.rent);
       return data;
     },
   });
   const [discountableAmount, setDiscountableAmount] = useState(0);
 
-  // console.log(withOutDiscount);
-  // console.log(withDiscount);
+
   useEffect(() => {
     const currentTheme = localStorage.getItem("selectedTheme");
-    // console.log(currentTheme);
+
     document.querySelector("body").setAttribute("data-theme", currentTheme);
   });
 
@@ -51,7 +49,7 @@ const CheckOutPage = () => {
 
   // Apply coupons
   const handleApplyCouons = (e) => {
-    // console.log("clied");
+
     e.preventDefault();
     const couponText = e.target.text.value;
     // Check if coupon is valid
@@ -61,9 +59,9 @@ const CheckOutPage = () => {
     if (couponTextValid) {
       //  Check if coupon is expired
       const isExpired = isTodayBefore(couponTextValid.expriation);
-      console.log(isExpired);
+   
       if (isExpired !== false) {
-        console.log(paymentInfo.rent);
+   
         const discountableAmount =
           paymentInfo.rent * (parseInt(couponTextValid.discount) / 100);
         setDiscountableAmount(discountableAmount);
@@ -72,7 +70,7 @@ const CheckOutPage = () => {
           paymentInfo.rent * (parseInt(couponTextValid.discount) / 100);
         setWithDiscount(payableAmount);
         setDisableBtn(true);
-        // console.log(payableAmount);
+
       } else {
         toast.error("Coupon expired!");
       }

@@ -30,7 +30,7 @@ const MakeAnnouncement = () => {
     const form = e.target;
     const title = form.title.value;
     const description = form.description.value;
-    // console.log(title, description);
+    //
 
     mutateAsync({ title, description, time: new Date().toLocaleDateString() });
   };
@@ -40,18 +40,18 @@ const MakeAnnouncement = () => {
       // style={{ border: "1px solid red" }}
     >
       <form className="w-full" onSubmit={handleAnnouncement}>
-        <div className="subscribe w-[80%] h-96 mx-auto">
-          <p className="textColor">ANNOUNCEMENT</p>
+        <div className="subscribe  w-[90%] h-96 mx-auto">
+          <p className="textColor xsm:text-base">ANNOUNCEMENT</p>
           <input
             placeholder="Title"
-            className="subscribe-input absolute bottom-40 textColor"
+            className="subscribe-input absolute bottom-40 textColor xsm:w-[85%] w-[95%]"
             name="title"
             type="text"
             required
           />
           <textarea
             placeholder="Description"
-            className="subscribe-input absolute bottom-14 textColor"
+            className="subscribe-input absolute bottom-14 textColor xsm:w-[85%] w-[95%]"
             name="description"
             type="text"
             required

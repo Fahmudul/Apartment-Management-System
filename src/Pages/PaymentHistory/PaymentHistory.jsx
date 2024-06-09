@@ -13,9 +13,23 @@ const PaymentHistory = () => {
       return data;
     },
   });
+  if (paymentHistoryDetails.length === 0) {
+    return (
+      <div
+        className=" h-screen flex justify-center items-center"
+        style={{ border: "1px solid" }}
+      >
+        <h1 className="text-3xl font-semibold italic mb-5">
+          Please pay first! 🙂
+        </h1>
+      </div>
+    );
+  }
   return (
     <div className="w-[90%] mx-auto mt-5">
-    <h1 className="text-5xl text-center underline textColor mb-5">Payment History</h1>
+      <h1 className="text-5xl text-center underline textColor mb-5">
+        Payment History
+      </h1>
       <div className="overflow-x-auto   px-1 py-2">
         <table className="table" style={{ width: "90%" }}>
           {/* head */}

@@ -6,10 +6,12 @@ import { useMutation } from "@tanstack/react-query";
 import useAuthInfo from "../../Hooks/useAuthInfo/useAuthInfo";
 import useAxiosToken from "../../Hooks/useAxiosToken/useAxiosToken";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function Widget({ item, refetch }) {
   const { user } = useAuthInfo();
   const axiosToken = useAxiosToken();
+  const navigate = useNavigate();
   const {
     floor_no,
     block_name,
@@ -20,7 +22,7 @@ export default function Widget({ item, refetch }) {
     _id,
     ready,
   } = item;
-  // console.log(ready);
+  //
   const [theme, setTheme] = useState("");
   useEffect(() => {
     const selectedTheme = localStorage.getItem("selectedTheme");
@@ -34,7 +36,7 @@ export default function Widget({ item, refetch }) {
         `/agreements/?email=${user?.email}`,
         agreementDetails
       );
-      // console.log(data["insertedId"]);
+      //
       return data;
     },
     onSuccess: (data) => {
@@ -48,7 +50,11 @@ export default function Widget({ item, refetch }) {
     },
   });
   const handleAgreement = async (_id) => {
-    // console.log("room id", _id);
+    if (!user) {
+      toast.error("Please Login First!");
+      return navigate("/login");
+    }
+    //
     const agreementDetails = {
       id: id,
       roomId: _id,

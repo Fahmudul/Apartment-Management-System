@@ -5,7 +5,7 @@ import useAxiosToken from "../../Hooks/useAxiosToken/useAxiosToken";
 import { Link } from "react-router-dom";
 const Payments = () => {
   const { user } = useAuthInfo();
-  // console.log(user?.email);
+  //
   const axiosToken = useAxiosToken();
   //Get agreement details from backend
   const { data } = useQuery({
@@ -13,7 +13,7 @@ const Payments = () => {
     enabled: !!user,
     queryFn: async () => {
       const { data } = await axiosToken(`/agreements/?email=${user?.email}`);
-      console.log(data);
+
       return data;
     },
   });
@@ -51,16 +51,18 @@ const Payments = () => {
     }
   }
 
-  // console.log(agreementInfo);
+  //
   // const { block_name, floor_no } = data;
-  // console.log(block_name, floor_no);
+  //
   if (!data) {
     return (
       <div
         className=" h-screen flex justify-center items-center"
         style={{ border: "1px solid" }}
       >
-        <h1 className="text-3xl font-semibold italic mb-5">You have cleared all payments 😊</h1>
+        <h1 className="text-3xl font-semibold italic mb-5">
+          You have cleared all payments 😊
+        </h1>
       </div>
     );
   }

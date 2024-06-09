@@ -5,23 +5,22 @@
   max-width: 700px;
   /* max-height: 650px; */
   height: auto;
-  border: 1px solid black;
   /* margin-right: 50px; */
+  border-radius: 7% 25% 6% 25% / 7% 25% 6% 25%;
+
   margin: 0;
 }
 
 .banner-container {
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
   gap: 3em;
   /* flex-direction: column; */
 }
-.banner-text {
+/* .banner-text {
   width: 50%;
-}
-.carouselContainer {
-  /* width: 100%; */
-}
+} */
+
 
 .swiper-slide {
   text-align: center;
@@ -89,7 +88,6 @@
     max-height: 650px;
     /* width: 200px;
     height: auto; */
-    border: 1px solid black;
     /* margin-right: 50px; */
   }
   .carouselContainer,
@@ -98,7 +96,7 @@
   }
 
   #banner-title {
-    font-size: 120px;
+    /* font-size: 120px; */
     line-height: 1.1;
     font-weight: 400;
   }

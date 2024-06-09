@@ -7,15 +7,68 @@ import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useAdmin from "../../Hooks/useAdmin/useAdmin";
+import { useQueries, useQuery } from "@tanstack/react-query";
+import useAxiosToken from "../../Hooks/useAxiosToken/useAxiosToken";
 const CommonProfile = () => {
+  const axiosToken = useAxiosToken();
   const { user } = useAuthInfo();
   const { data } = useAdmin();
-  // console.log(data.role);
+  const { data: memberInfo } = useQuery({
+    queryKey: ["memberInfo"],
+
+    queryFn: async () => {
+      const { data } = await axiosToken(`/acceptedUsers/?email=${user?.email}`);
+
+      return data;
+    },
+  });
+  function getMonthDay(dateString) {
+    // Use Date.parse() to convert the string to a timestamp (milliseconds since epoch)
+    const timestamp = Date.parse(dateString);
+
+    // If parsing is successful (returns a number, not NaN)
+    if (!isNaN(timestamp)) {
+      // Create a new Date object from the timestamp
+      const dateObject = new Date(timestamp);
+
+      // Extract day and month index (0-based)
+      const day = dateObject.getDate();
+      const monthIndex = dateObject.getMonth();
+      const year = dateObject.getFullYear();
+      // Month names array
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      // Get the month name
+      const monthName = monthNames[monthIndex];
+
+      // Return an object with month name and day
+      return {
+        monthName,
+        day,
+        year,
+      };
+    } else {
+      // Handle parsing error (invalid date string)
+      return "Invalid date string format.";
+    }
+  }
+  //
   return (
-    <div className="w-full flex justify-center min-h-screen items-center" >
-      <div
-        className=" p-5 flex w-[80%] h-[60%]"
-      >
+    <div className="w-full flex justify-center min-h-screen items-center">
+      <div className=" p-5 flex w-[80%] h-[60%]">
         <div className="lg:w-[35%] ">
           <div className="containerr ">
             <div
@@ -91,27 +144,48 @@ const CommonProfile = () => {
                     <p className="text-xl font-semibold">Email:</p>{" "}
                     <p className="text-xl font-bold">{user?.email}</p>
                   </div>
-                  <div className="flex justify-between px-2">
-                    <p className="text-xl font-semibold">Member since:</p>{" "}
-                    <p className="text-xl font-bold">12/23/24</p>
-                  </div>
+                  {memberInfo && (
+                    <>
+                      <div className="flex justify-between px-2">
+                        <p className="text-xl font-semibold">Member since:</p>{" "}
+                        <p className="text-xl font-bold">
+                          {getMonthDay(memberInfo?.agreemtentDate).day}{" "}
+                          {getMonthDay(memberInfo?.agreemtentDate).monthName}{" "}
+                          {getMonthDay(memberInfo?.agreemtentDate).year}
+                        </p>
+                      </div>
+                    </>
+                  )}
                 </TabPanel>
                 <TabPanel>
-                  <div className="flex justify-between px-2 mb-3">
-                    <p className="text-xl font-semibold">Aggrements date:</p>{" "}
-                    <p className="text-xl font-bold">12/23/24</p>
-                  </div>
+                  <>
+                    <div className="flex justify-between px-2 mb-3">
+                      <p className="text-xl font-semibold">Member since:</p>{" "}
+                      <p className="text-xl font-bold">
+                        {getMonthDay(memberInfo?.agreemtentDate).day || "None"}{" "}
+                        {getMonthDay(memberInfo?.agreemtentDate).monthName}{" "}
+                        {getMonthDay(memberInfo?.agreemtentDate).year}
+                      </p>
+                    </div>
+                  </>
+
                   <div className="flex justify-between px-2 mb-3">
                     <p className="text-xl font-semibold">Floor:</p>{" "}
-                    <p className="text-xl font-bold">2</p>
+                    <p className="text-xl font-bold">
+                      {memberInfo?.floor_no || "None"}
+                    </p>
                   </div>
                   <div className="flex justify-between px-2 mb-3">
-                    <p className="text-xl font-semibold">Bloock:</p>{" "}
-                    <p className="text-xl font-bold">{"A"}</p>
+                    <p className="text-xl font-semibold">Block:</p>{" "}
+                    <p className="text-xl font-bold">
+                      {memberInfo?.block_name || "None"}
+                    </p>
                   </div>
                   <div className="flex justify-between px-2">
                     <p className="text-xl font-semibold">Room no:</p>{" "}
-                    <p className="text-xl font-bold">101</p>
+                    <p className="text-xl font-bold">
+                      {memberInfo?.apartment_no || "None"}
+                    </p>
                   </div>
                 </TabPanel>
               </Tabs>

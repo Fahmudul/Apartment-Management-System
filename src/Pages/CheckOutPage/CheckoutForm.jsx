@@ -27,13 +27,13 @@ const CheckoutForm = ({ paymentInfo, withDiscount, discountableAmount }) => {
       getCLientSecret();
     }
   }, [axiosToken, defaultAmount]);
-  // console.log(clientSecret);
+  //
   // Get client secret from backend
   const handleSubmit = async (e) => {
     e.preventDefault();
     const amount = document.querySelector(".finalAmount").innerText;
     setDefaultAmount(parseInt(amount.slice(1)));
-    // console.log('clicked')
+    //
     if (!stripe || !elements) {
       return;
     }
@@ -60,12 +60,11 @@ const CheckoutForm = ({ paymentInfo, withDiscount, discountableAmount }) => {
           },
         },
       });
-    console.log(paymentIntent);
+
     if (paymentError) {
       toast.error(paymentError.message);
     } else {
       if (paymentIntent.status === "succeeded") {
-        console.log("succeeded");
         setTransactionId(paymentIntent.id);
         const paymentInfo = {
           email: user?.email,
@@ -74,7 +73,7 @@ const CheckoutForm = ({ paymentInfo, withDiscount, discountableAmount }) => {
           transactionId: paymentIntent.id,
         };
         const res = await axiosToken.post("/paymentsHistory", paymentInfo);
-        // console.log(res);
+        //
 
         if (res.data.insertedId) {
           toast.success("Payment successful");

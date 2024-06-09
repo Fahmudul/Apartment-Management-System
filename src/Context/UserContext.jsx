@@ -50,12 +50,11 @@ const UserContext = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         const email = { email: currentUser.email };
-        console.log("Current user", currentUser);
         setUser(currentUser);
-        
+
         //Request for token from server
         const { data } = await axiosBase.post("/jwt", email);
-        // console.log(data);
+        //
         //Set token to local storage
         if (data) {
           localStorage.setItem("access-token", data);

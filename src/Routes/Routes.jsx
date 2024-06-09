@@ -18,6 +18,7 @@ import MemberRoutes from "./MemberRoutes";
 import Payments from "../Pages/Payments/Payments";
 import CheckOutPage from "../Pages/CheckOutPage/CheckOutPage";
 import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
+import AuthenticationRoutes from "./AuthenticationRoutes";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,17 +31,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/appartment",
-        element: (
-          <PrivateRoutes>
-            <Appartment />
-          </PrivateRoutes>
-        ),
+        element: <Appartment />,
       },
     ],
   },
   {
     path: "/login",
-    element: <LoginSignUp />,
+    element: (
+      <AuthenticationRoutes>
+        <LoginSignUp />
+      </AuthenticationRoutes>
+    ),
   },
   // Dashboard Routes
   {

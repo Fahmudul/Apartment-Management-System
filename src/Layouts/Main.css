@@ -25,6 +25,9 @@
 .textColor1 {
   color: var(--body_color);
 }
+.mapContainer {
+  background-color: var(--mapLocationContainer);
+}
 .statisticColor {
   color: var(--card_color);
 }
@@ -57,6 +60,9 @@
 }
 
 .image-border {
+  border-radius: 7% 25% 6% 25% / 7% 25% 6% 25%;
+}
+.imgBorder {
   border-radius: 7% 25% 6% 25% / 7% 25% 6% 25%;
 }
 @keyframes scale {

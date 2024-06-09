@@ -22,7 +22,7 @@
 
 .subscribe p {
   text-align: center;
-  font-size: 25px;
+  /* font-size: 25px; */
   font-weight: bold;
   letter-spacing: 4px;
   line-height: 28px;
@@ -34,7 +34,6 @@ textarea,
   border: none;
   border-bottom: 1px solid var(--button_color_hover);
   padding: 10px;
-  width: 95%;
   background: transparent;
   transition: all 0.25s ease;
 }
@@ -78,8 +77,8 @@ textarea:focus,
 }
 
 .subscribe .submit-btn:active {
-  /* background-color: #07013d; */
+
   transform: scale(0.95);
   transition: all 0.25s ease;
-  /* box-shadow: -5px 6px 20px 0px rgba(88, 88, 88, 0.569); */
+
 }

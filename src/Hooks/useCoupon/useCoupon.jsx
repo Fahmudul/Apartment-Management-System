@@ -8,7 +8,7 @@ const useCoupon = () => {
     queryKey: ["coupon"],
     queryFn: async () => {
       const { data } = await axiosToken.get("/coupon");
-      console.log(data);
+   
       return data;
     },
   });

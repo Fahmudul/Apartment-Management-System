@@ -14,7 +14,6 @@ const AggrementRequests = () => {
     queryKey: ["requests"],
     queryFn: async () => {
       const { data } = await axiosToken("/agreementRequest");
-      console.log(data);
       return data;
     },
   });

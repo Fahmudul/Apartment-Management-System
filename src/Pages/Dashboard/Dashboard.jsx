@@ -10,14 +10,19 @@ import UserBar from "../../Components/UserBar/UserBar";
 import MemberBar from "../../Components/MemberBar/MemberBar";
 import { NavLink, Outlet } from "react-router-dom";
 import { RxExit } from "react-icons/rx";
+import useAuthInfo from "../../Hooks/useAuthInfo/useAuthInfo";
 const Dashboard = () => {
+  const { SignOut } = useAuthInfo();
+  const handleLogout = () => {
+    SignOut();
+  };
   const { data } = useAdmin();
   useEffect(() => {
     const currentTheme = localStorage.getItem("selectedTheme");
-    // console.log(currentTheme)
+    //
     document.querySelector("body").setAttribute("data-theme", currentTheme);
   });
-  // console.log(data?.role);
+  //
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="main-screen bgColor flex min-w-screen min-h-screen ">
@@ -58,7 +63,11 @@ const Dashboard = () => {
                     </span>
                     <p>Home</p>
                   </NavLink>
-                  <button className="absolute bottom-2" id="logoutBtn">
+                  <button
+                    className="absolute bottom-2"
+                    id="logoutBtn"
+                    onClick={handleLogout}
+                  >
                     <span className="">
                       <RxExit className="w-6 h-6" />
                     </span>

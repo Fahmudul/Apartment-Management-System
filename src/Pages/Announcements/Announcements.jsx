@@ -9,7 +9,7 @@ const Announcements = () => {
     queryKey: ["announcements"],
     queryFn: async () => {
       const { data } = await axiosToken("/announcements");
-      console.log(data);
+
       return data;
     },
   });

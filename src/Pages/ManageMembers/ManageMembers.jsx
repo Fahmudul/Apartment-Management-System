@@ -29,7 +29,7 @@ const ManageMembers = () => {
   });
   const handleMembers = async (memberEmail) => {
     await mutateAsync(memberEmail);
-    // console.log(id);
+    //
   };
   return (
     <div className="w-[90%] mx-auto mt-5 ">

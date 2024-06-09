@@ -33,36 +33,31 @@ const Banner = () => {
     setTheme(selectedTheme);
   }, []);
   return (
-    <div className="banner-container ">
+    <div className="banner-container grid grid-cols-2">
       <div
         className="banner-text flex flex-col justify-center items-center"
-        style={{ border: "1px solid red" }}
+        // style={{ border: "1px solid red" }}
       >
-        <div className="w-[65%]">
+        <div className="lg:w-[65%] xsm:w-[90%] xsm:py-7">
           <h1
-            style={{ border: "1px solid red", fontFamily: "Josefin Sans" }}
-            className={`tracking-widest font-josefin uppercase sm:text-2xl sm:text-center lg:text-left ${
-              theme == "light" ? "text-[#b18045]" : "text-[#6a58dd]"
+            style={{ fontFamily: "Josefin Sans" }}
+            className={`lg:tracking-[10px] xsm:tracking-widest font-josefin uppercase sm:text-2xl lg:text-xl tracking- sm:text-center xsm:text-center lg:text-left ${
+              theme == "light" ? "text-[#b18045]" : "text-[#6a58dd] "
             }`}
-            id="banner-title"
           >
             Your Dream Home Awaits
           </h1>
           <h1
-            style={{ border: "1px solid red", fontFamily: "Josefin Sans" }}
-            id="banner-heading"
-            className={`lg:text-[110px] sm:text-5xl sm:text-center lg:text-left  font-light mt-5 mb-6 u ${
+            style={{ fontFamily: "Josefin Sans" }}
+            className={`lg:text-[120px] lg:h-[200px] lg:leading-[110px] sm:text-center lg:text-left  lg:font-light mt-10 mb-12 xsm:text-center xsm:text-3xl xsm:font-semibold ${
               theme == "light" ? "text-[#b18045]" : "text-[#6a58dd]"
             }`}
           >
             Luxury Apartments
           </h1>
-          <div
-            style={{ border: "1px solid red" }}
-            className="sm:flex sm:justify-center lg:block gap-5 lg:gap-0"
-          >
+          <div className="xsm:flex xsm:justify-center  lg:block gap-5 lg:gap-0">
             <button
-              className={`button-banner lg:px-5 lg:py-4 py-3 px-3 rounded-xl font-bold mr-2  ${
+              className={`button-banner lg:px-5 lg:py-4 py-3 px-3 rounded-xl font-bold mr-2 xsm:text-xs lg:text-lg   ${
                 theme === "light"
                   ? "hover:outline outline-[#d19b59] text-[#ECE3CA]  hover:transition-all hover:duration-500 bg-[#b18045] hover:bg-transparent hover:text-[#b18045]"
                   : "hover:outline outline-[#6a58dd] text-[#352f91] hover:transition-all hover:duration-500 bg-[#6a58dd] hover:bg-transparent hover:text-[#6a58dd]"
@@ -71,7 +66,7 @@ const Banner = () => {
               TAKE A TOUR
             </button>
             <button
-              className={`button-banner lg:px-5 lg:py-4  rounded-xl font-bold py-3 px-3   ${
+              className={`button-banner lg:px-5 lg:py-4  rounded-xl font-bold py-3 px-3 xsm:text-xs lg:text-lg xsm:hidden md:inline  ${
                 theme === "light"
                   ? "hover:bg-[#b18045] text-[#b18045] hover:text-[#ECE3CA] hover:transition-all hover:duration-500"
                   : "hover:bg-[#6a58dd] text-[#6a58dd] hover:text-[#352f91] hover:transition-all hover:duration-500"
@@ -82,7 +77,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="carouselContainer ">
+      <div className="carouselContainer flex justify-end">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -90,7 +85,6 @@ const Banner = () => {
             delay: 2500,
             disableOnInteraction: false,
           }}
-         
           modules={[Autoplay, Pagination]}
           onAutoplayTimeLeft={onAutoplayTimeLeft}
           className="mySwiper"

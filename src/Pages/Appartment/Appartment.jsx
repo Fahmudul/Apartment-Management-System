@@ -12,7 +12,7 @@ const Appartment = () => {
     queryKey: ["roomscount"],
     queryFn: async () => {
       const { data } = await axiosToken("/allAppartments");
-      // console.log(data.count);
+      //
       return data.count;
     },
   });
@@ -35,15 +35,17 @@ const Appartment = () => {
       const { data } = await axiosToken(
         `/allRooms/?skip=${currentPage}&limit=${itemsPerPage}`
       );
-      // console.log(data);
+      //
       return data;
     },
   });
-  // console.log(numberOfItemsForButton);
+  //
   if (isLoading) return <Loader />;
   return (
     <div className="">
-      <h1 className="text-4xl underline font-bold text-center textColor">Browse Available Apartments</h1>
+      <h1 className="text-4xl underline font-bold text-center textColor">
+        Browse Available Apartments
+      </h1>
       <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-20 border-2 pt-9 mx-auto px-3 place-items-center lg:w-[95%]">
         {appartments.map((item) => (
           <Widget key={item._id} item={item} refetch={refetch} />

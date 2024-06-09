@@ -21,7 +21,7 @@ const AdminProfile = () => {
     queryKey: ["rooms"],
     queryFn: async () => {
       const { data } = await axiosToken("/allRooms");
-      // console.log(data);
+
       return data;
     },
   });

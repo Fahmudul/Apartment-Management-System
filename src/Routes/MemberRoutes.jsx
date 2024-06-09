@@ -7,7 +7,7 @@ import useAdmin from "../Hooks/useAdmin/useAdmin";
 const MemberRoutes = ({ children }) => {
   //Checking if user is admin
   const { data } = useAdmin();
-  // console.log(data.role);
+  //
   const location = useLocation();
   const { user, loading } = useAuthInfo(UserAuthContext);
   if (loading) return <Loader />;
