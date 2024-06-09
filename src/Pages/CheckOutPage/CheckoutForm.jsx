@@ -7,7 +7,7 @@ import useAuthInfo from "../../Hooks/useAuthInfo/useAuthInfo";
 import { useNavigate } from "react-router-dom";
 const CheckoutForm = ({ paymentInfo, withDiscount, discountableAmount }) => {
   const axiosToken = useAxiosToken();
-  const { user } = useAuthInfo();
+  const { user, monthName, setMonthName } = useAuthInfo();
   const stripe = useStripe();
   const [clientSecret, setClientSecret] = useState("");
   const [defaultAmount, setDefaultAmount] = useState(0);
@@ -69,7 +69,7 @@ const CheckoutForm = ({ paymentInfo, withDiscount, discountableAmount }) => {
         const paymentInfo = {
           email: user?.email,
           price: defaultAmount,
-          date: new Date().toLocaleDateString(),
+          date: monthName,
           transactionId: paymentIntent.id,
         };
         const res = await axiosToken.post("/paymentsHistory", paymentInfo);

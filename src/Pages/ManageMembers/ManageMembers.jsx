@@ -79,10 +79,21 @@ const ManageMembers = () => {
                 <td className="text-lg">01/01/2020</td>
                 <th className="pl-7">
                   <button
-                    className="active:scale-95"
+                    className={`${
+                      member?.role === "user" || member?.role === "admin"
+                        ? "cursor-not-allowed"
+                        : ""
+                    }`}
+                    disabled={member?.role === "user" || member?.role === "admin"}
                     onClick={() => handleMembers(member?.email)}
                   >
-                    <IoIosRemoveCircleOutline className="w-6 h-6 hover:fill-red-500" />
+                    <IoIosRemoveCircleOutline
+                      className={`${
+                        member?.role === "user" || member?.role === "admin"
+                          ? "w-6 h-6"
+                          : "w-6 h-6 hover:fill-red-500"
+                      }`}
+                    />
                   </button>
                 </th>
               </tr>

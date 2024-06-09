@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div className=" min-h-screen w-[90%]  mx-auto ">
       <Helmet>
-        <title>Damn | Home</title>
+        <title>CozyNest | Home</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
       <div className="slider-auto min-h-[340px] ">

@@ -28,7 +28,6 @@ const CheckOutPage = () => {
   });
   const [discountableAmount, setDiscountableAmount] = useState(0);
 
-
   useEffect(() => {
     const currentTheme = localStorage.getItem("selectedTheme");
 
@@ -49,7 +48,6 @@ const CheckOutPage = () => {
 
   // Apply coupons
   const handleApplyCouons = (e) => {
-
     e.preventDefault();
     const couponText = e.target.text.value;
     // Check if coupon is valid
@@ -59,9 +57,8 @@ const CheckOutPage = () => {
     if (couponTextValid) {
       //  Check if coupon is expired
       const isExpired = isTodayBefore(couponTextValid.expriation);
-   
+
       if (isExpired !== false) {
-   
         const discountableAmount =
           paymentInfo.rent * (parseInt(couponTextValid.discount) / 100);
         setDiscountableAmount(discountableAmount);
@@ -70,12 +67,13 @@ const CheckOutPage = () => {
           paymentInfo.rent * (parseInt(couponTextValid.discount) / 100);
         setWithDiscount(payableAmount);
         setDisableBtn(true);
-
       } else {
         toast.error("Coupon expired!");
+        setDisableBtn(false);
       }
     } else {
       toast.error("Invalid coupon!");
+      setDisableBtn(false);
     }
   };
   return (

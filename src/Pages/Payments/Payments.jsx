@@ -3,9 +3,9 @@ import "./Payment.css";
 import useAuthInfo from "../../Hooks/useAuthInfo/useAuthInfo";
 import useAxiosToken from "../../Hooks/useAxiosToken/useAxiosToken";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 const Payments = () => {
-  const { user } = useAuthInfo();
-  //
+  const { user, monthName, setMonthName } = useAuthInfo();
   const axiosToken = useAxiosToken();
   //Get agreement details from backend
   const { data } = useQuery({
@@ -18,15 +18,12 @@ const Payments = () => {
     },
   });
   function getMonthName(dateString) {
-    // Use Date.parse() to convert the string to a timestamp (milliseconds since epoch)
     const timestamp = Date.parse(dateString);
 
-    // If parsing is successful (returns a number, not NaN)
     if (!isNaN(timestamp)) {
       // Create a new Date object from the timestamp
       const dateObject = new Date(timestamp);
 
-      // Get the month index (0-indexed) and convert it to month name
       const monthIndex = dateObject.getMonth();
       const monthNames = [
         "January",
@@ -46,14 +43,10 @@ const Payments = () => {
 
       return monthName;
     } else {
-      // Handle parsing error (invalid date string)
       return "Invalid date string format.";
     }
   }
 
-  //
-  // const { block_name, floor_no } = data;
-  //
   if (!data) {
     return (
       <div
@@ -117,11 +110,13 @@ const Payments = () => {
                 />
               </div>
               <div className="inputBoxxRight">
+                <label htmlFor="">Select month to pay</label>
                 <input
-                  type="email"
-                  disabled
-                  defaultValue={"$ " + data?.rent}
-                  className="cursor-not-allowed"
+                  type="date"
+                  // disabled
+                  placeholder="Select Date"
+                  className="cursor-pointer"
+                  onChange={(e) => setMonthName(e.target.value)}
                 />
               </div>
             </div>

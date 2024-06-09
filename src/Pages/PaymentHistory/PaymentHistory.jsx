@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosToken from "../../Hooks/useAxiosToken/useAxiosToken";
 import useAuthInfo from "../../Hooks/useAuthInfo/useAuthInfo";
 import { IoSearch } from "react-icons/io5";
+import { useState } from "react";
 
 const PaymentHistory = () => {
   const axiosToken = useAxiosToken();
+  const [serarchText, setSearchText] = useState("");
   const { user } = useAuthInfo();
   const { data: paymentHistoryDetails = [] } = useQuery({
     queryKey: ["paymentHistory"],
@@ -14,6 +16,43 @@ const PaymentHistory = () => {
       return data;
     },
   });
+
+  const foundMonth = paymentHistoryDetails.filter((item) => {
+    return serarchText === "" ? item : getMonthName(item.date) == serarchText;
+  });
+
+  const handleSearch = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  function getMonthName(dateString) {
+    // Create a Date object from the given string
+    const dateObject = new Date(dateString);
+
+    // Get the month index (0-based)
+    const monthIndex = dateObject.getMonth();
+
+    // Month names array
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get the month name
+    const monthName = monthNames[monthIndex];
+
+    return monthName.toLowerCase();
+  }
   if (paymentHistoryDetails.length === 0) {
     return (
       <div
@@ -34,10 +73,11 @@ const PaymentHistory = () => {
         </h1>
         <div className="coupon-field flex items-center relative ">
           <input
-            placeholder="Title"
+            placeholder="Enter full month "
             className="subscribe-input  textColor absolute right-0"
             name="title"
             type="text"
+            onChange={handleSearch}
           />
           <IoSearch className="absolute right-3 button-hover" />
         </div>
@@ -55,7 +95,7 @@ const PaymentHistory = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {paymentHistoryDetails.map((details) => (
+            {foundMonth.map((details) => (
               <tr key={details._id} className="">
                 <td>
                   <div className="flex items-center gap-3">
@@ -73,11 +113,10 @@ const PaymentHistory = () => {
                     {details?.transactionId}
                   </span>
                 </td>
-                <td className="text-lg">01/01/2020</td>
+                <td className="text-lg">{details?.date}</td>
               </tr>
             ))}
           </tbody>
-          {/* foot */}
         </table>
       </div>
     </div>

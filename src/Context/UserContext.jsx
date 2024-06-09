@@ -16,6 +16,8 @@ export const UserAuthContext = createContext();
 const UserContext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [monthName, setMonthName] = useState(new Date().toLocaleDateString());
+
   const axiosBase = useAxiosBase();
   // Create Account
   const CreateUser = (email, password) => {
@@ -75,6 +77,8 @@ const UserContext = ({ children }) => {
     loading,
     SignOut,
     UpdateUserProfile,
+    monthName,
+    setMonthName,
   };
   return (
     <UserAuthContext.Provider value={userAuthInfo}>
