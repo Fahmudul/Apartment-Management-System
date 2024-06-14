@@ -68,8 +68,8 @@ Cozy Nest is a comprehensive apartment management system designed to facilitate 
 
 ## GitHub Repositories
 
-- **Client Side Repository:** [Cozy Nest Front-end](https://github.com/programming-hero-web-course1/b9a12-client-side-Fahmudul)
-- **Server Side Repository:** [Cozy Nest Back-end](https://github.com/programming-hero-web-course1/b9a12-server-side-Fahmudul)
+- **Client Side Repository:** [Cozy Nest Front-end](https://github.com/Fahmudul/Apartment-Management-System)
+- **Server Side Repository:** [Cozy Nest Back-end](https://github.com/Fahmudul/Apartment-Management-System-Server)
 
 ## Optional Features
 
