@@ -8,8 +8,7 @@ Cozy Nest is a comprehensive apartment management system designed to facilitate 
 
 ## Admin Credentials
 
-- **Admin Username:** hassan23@gmail.com
-- **Admin Password:** Siam1234
+
 
 ## Features
 
