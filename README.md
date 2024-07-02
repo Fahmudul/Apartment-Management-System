@@ -1,4 +1,4 @@
-### Cozy Nest: Streamlined Apartment Management
+# Cozy Nest: Streamlined Apartment Management
 
 **Cozy Nest** is an efficient apartment management system aimed at optimizing building operations. The responsive website features robust user authentication using JWT for email/password and social logins, ensuring secure token storage in localStorage. Explore the live site at [Cozy Nest](https://cozynest-cbb8e.web.app).
 
