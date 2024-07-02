@@ -16,9 +16,9 @@
 
 #### Running the Project Locally
 
-1. Clone both client-side and server-side repositories from the respective GitHub links.
-2. Install necessary dependencies with `npm install` in both directories.
-3. Configure essential environment variables, including Firebase setup and MongoDB credentials.
-4. Initiate the client-side development server using `npm start` and the server-side with `npm run start:dev`.
+- **Clone both client-side and server-side repositories from the respective GitHub links.
+- **Install necessary dependencies with `npm install` in both directories.
+- **Configure essential environment variables, including Firebase setup and MongoDB credentials.
+- **Initiate the client-side development server using `npm start` and the server-side with `npm run start:dev`.
 
 Cozy Nest provides a seamless experience for managing apartment complexes, enhancing operational efficiency and tenant satisfaction through its modular design and customizable features.
