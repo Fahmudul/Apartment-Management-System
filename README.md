@@ -1,6 +1,5 @@
 **Cozy Nest** is a comprehensive apartment management system designed to streamline building operations. The responsive website includes user authentication with JWT for email/password and social logins, storing tokens securely in localStorage. Visit the live site at [Cozy Nest](https://cozynest-cbb8e.web.app).
 
-
 ### Key Features
 
 - **Agreement Request**: Users can request agreements, becoming members upon admin approval.
@@ -20,3 +19,4 @@
 3. Configure environment variables, including Firebase and MongoDB credentials.
 4. Start the client with `npm start` and the server with `npm run start:dev`.
 
+Cozy Nest streamlines building operations, enhancing tenant experiences with a modular design and customizable features for various apartment complexes.
