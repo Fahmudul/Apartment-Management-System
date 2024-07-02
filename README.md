@@ -1,22 +1,24 @@
-**Cozy Nest** is a comprehensive apartment management system designed to streamline building operations. The responsive website includes user authentication with JWT for email/password and social logins, storing tokens securely in localStorage. Visit the live site at [Cozy Nest](https://cozynest-cbb8e.web.app).
+### Cozy Nest: Streamlined Apartment Management
 
-### Key Features
+**Cozy Nest** is an efficient apartment management system aimed at optimizing building operations. The responsive website features robust user authentication using JWT for email/password and social logins, ensuring secure token storage in localStorage. Explore the live site at [Cozy Nest](https://cozynest-cbb8e.web.app).
 
-- **Agreement Request**: Users can request agreements, becoming members upon admin approval.
-- **Payment and Coupon Application**: Members can pay charges and apply coupons.
-- **Admin Dashboard**: Manage members, make announcements, handle agreement requests, and manage coupons.
+#### Key Features
 
-### Technologies Used
+- **Agreement Request**: Users can request agreements, gaining membership upon admin approval.
+- **Payment and Coupon Application**: Members can conveniently pay charges and apply coupons.
+- **Admin Dashboard**: Effectively manage members, issue announcements, handle agreement requests, and administer coupons.
 
-- **Front-end**: React, Tailwind CSS, Daisy UI, Swiper JS
-- **Back-end**: Node.js, Express.js
-- **Database**: MongoDB
+#### Technologies Used
 
-### Running the Project Locally
+- **Front-end**: Developed with React, Tailwind CSS, Daisy UI, and Swiper JS for intuitive user interfaces.
+- **Back-end**: Powered by Node.js and Express.js, ensuring robust server-side operations.
+- **Database**: Utilizes MongoDB for efficient and scalable data storage.
 
-1. Clone the client-side and server-side repositories.
-2. Run `npm install` in both directories.
-3. Configure environment variables, including Firebase and MongoDB credentials.
-4. Start the client with `npm start` and the server with `npm run start:dev`.
+#### Running the Project Locally
 
-Cozy Nest streamlines building operations, enhancing tenant experiences with a modular design and customizable features for various apartment complexes.
+1. Clone both client-side and server-side repositories from the respective GitHub links.
+2. Install necessary dependencies with `npm install` in both directories.
+3. Configure essential environment variables, including Firebase setup and MongoDB credentials.
+4. Initiate the client-side development server using `npm start` and the server-side with `npm run start:dev`.
+
+Cozy Nest provides a seamless experience for managing apartment complexes, enhancing operational efficiency and tenant satisfaction through its modular design and customizable features.
