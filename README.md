@@ -22,3 +22,7 @@
 - **Initiate the client-side development server using `npm start` and the server-side with `npm run start:dev`.
 
 Cozy Nest provides a seamless experience for managing apartment complexes, enhancing operational efficiency and tenant satisfaction through its modular design and customizable features.
+
+### Admin Access
+- ** mail: siam342@gmail.com
+- ** pass: 123456
